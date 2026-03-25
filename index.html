@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProCarthy — Done Different</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <img src="images/pc-color-logo.png" alt="ProCarthy" class="preloader-logo">
+    <div class="preloader-line"></div>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="images/nav-logo-white.png" alt="ProCarthy" class="nav-logo-img">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="story.html">Story</a>
+        <a href="get-started.html">Get Started</a>
+        <a href="players.html">Our Players</a>
+        <a href="get-started.html" class="nav-cta">Contact</a>
+      </div>
+      <div class="nav-hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline>
+        <source src="images/hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Ethereal Shadow Overlay -->
+    <div id="etherealOverlay" class="ethereal-overlay">
+      <svg style="position: absolute; width: 0; height: 0;">
+        <defs>
+          <filter id="etherealFilter">
+            <feTurbulence result="undulation" numOctaves="2" baseFrequency="0.0005,0.002" seed="0" type="turbulence"/>
+            <feColorMatrix id="etherealHueRotate" in="undulation" type="hueRotate" values="180"/>
+            <feColorMatrix in="dist" result="circulation" type="matrix" values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"/>
+            <feDisplacementMap in="SourceGraphic" in2="circulation" scale="50" result="dist"/>
+            <feDisplacementMap in="dist" in2="undulation" scale="50" result="output"/>
+          </filter>
+        </defs>
+      </svg>
+      <div class="ethereal-filtered" style="filter: url(#etherealFilter) blur(4px);">
+        <div class="ethereal-color"></div>
+      </div>
+      <div class="ethereal-noise"></div>
+    </div>
+
+    <div class="container hero-content">
+      <span class="eyebrow">Est. 2022 — Southern California</span>
+      <h1>
+        <span class="hero-line"><span class="hero-line-inner">Done</span></span>
+        <span class="hero-line"><span class="hero-line-inner"><em>Different.</em></span></span>
+      </h1>
+      <p class="hero-subtitle">ProCarthy is not for everyone. We're built for the athlete who refuses to take no for an answer — chasing a dream with a clear pathway to the top.</p>
+      <div class="hero-cta-row">
+        <a href="get-started.html" class="btn btn-primary">Get Started <span class="arrow">→</span></a>
+        <a href="story.html" class="btn btn-ghost">Our Story</a>
+      </div>
+      <div class="hero-bottom">
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="number">4<sup>+</sup></span>
+            <span class="label">Locations</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number">100<sup>+</sup></span>
+            <span class="label">Athletes</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number">50<sup>+</sup></span>
+            <span class="label">College Commits</span>
+          </div>
+        </div>
+        <div class="hero-scroll-hint">
+          Scroll
+          <span class="scroll-line"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span>Done Different</span>
+      <span class="accent">ProCarthy</span>
+      <span>Not For Everyone</span>
+      <span class="accent">Elite Development</span>
+      <span>Push Guide Elevate</span>
+      <span class="accent">The Standard</span>
+      <span>Done Different</span>
+      <span class="accent">ProCarthy</span>
+      <span>Not For Everyone</span>
+      <span class="accent">Elite Development</span>
+      <span>Push Guide Elevate</span>
+      <span class="accent">The Standard</span>
+    </div>
+  </div>
+
+  <!-- Split: About -->
+  <section class="flush">
+    <div class="split">
+      <div class="split-media reveal-left">
+        <img src="images/web-perfect-2.jpg" alt="ProCarthy athlete in pink kit">
+      </div>
+      <div class="split-text reveal-right">
+        <span class="eyebrow">Who We Are</span>
+        <h2>Built for Athletes Who Refuse to Settle</h2>
+        <p>Founded in 2022 by former professional players and highly educated coaches — Vincent Probosz and Dan McCarthy saw the gap between average training and what high-level athletes actually need.</p>
+        <p>We bridge that gap with focused, high-performance development built around modern demands — technical precision, physical resilience, and the mindset to compete at the highest level.</p>
+        <a href="story.html" class="btn btn-ghost">Our Story <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">The Approach</span>
+        <h2>What Sets Us Apart</h2>
+      </div>
+    </div>
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-card reveal stagger-1">
+          <div class="number">01</div>
+          <h3>Elite Training</h3>
+          <p>Sessions designed around the modern demands of competitive soccer at the college and professional level. Nothing generic. Everything intentional.</p>
+        </div>
+        <div class="feature-card reveal stagger-2">
+          <div class="number">02</div>
+          <h3>Holistic Development</h3>
+          <p>We develop the complete athlete — technical skill, physical resilience, tactical awareness, and the winning mindset that separates good from great.</p>
+        </div>
+        <div class="feature-card reveal stagger-3">
+          <div class="number">03</div>
+          <h3>Proven Coaches</h3>
+          <p>Led by former professionals who know exactly what it takes to reach the top. No theory. Lived experience on the pitch and at the highest levels.</p>
+        </div>
+        <div class="feature-card reveal stagger-4">
+          <div class="number">04</div>
+          <h3>Clear Pathway</h3>
+          <p>A defined development pathway from evaluation to elite-level training, with personalized programs built around each athlete's goals and potential.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="flush">
+    <div class="stats-row">
+      <div class="stat-block reveal stagger-1">
+        <div class="number">4<sup>+</sup></div>
+        <div class="label">Training Locations</div>
+      </div>
+      <div class="stat-block reveal stagger-2">
+        <div class="number">100<sup>+</sup></div>
+        <div class="label">Active Athletes</div>
+      </div>
+      <div class="stat-block reveal stagger-3">
+        <div class="number">50<sup>+</sup></div>
+        <div class="label">College Commits</div>
+      </div>
+      <div class="stat-block reveal stagger-4">
+        <div class="number">2022</div>
+        <div class="label">Established</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Break -->
+  <div class="image-break">
+    <img src="images/full-goalie.jpg" alt="ProCarthy goalkeeper">
+    <div class="image-break-content reveal">
+      <span class="eyebrow">The Standard</span>
+      <h2>Every Session.<br>Every Rep.</h2>
+      <p style="margin-top: 12px; color: var(--light-gray);">We push, guide, and elevate — because average isn't in our vocabulary.</p>
+    </div>
+  </div>
+
+  <!-- Locations -->
+  <section>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Where We Train</span>
+        <h2>Across Southern California</h2>
+        <p>Four dedicated locations. One standard of excellence.</p>
+      </div>
+      <div class="locations-strip reveal">
+        <span class="location-tag active">South Bay</span>
+        <span class="location-tag">Palos Verdes</span>
+        <span class="location-tag">Long Beach</span>
+        <span class="location-tag">Orange County</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container reveal">
+      <span class="eyebrow">Not For Everyone</span>
+      <h2>Ready to Train<br><em>Different?</em></h2>
+      <p>Your pathway to the top starts here.</p>
+      <a href="get-started.html" class="btn btn-primary">Get Started <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <img src="images/pc-text.png" alt="ProCarthy Inc." class="nav-logo-img">
+          </a>
+          <p>Elite soccer development for serious athletes. Built by former professionals.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <a href="index.html">Home</a>
+          <a href="story.html">Story</a>
+          <a href="get-started.html">Get Started</a>
+          <a href="players.html">Our Players</a>
+        </div>
+        <div class="footer-col">
+          <h4>Locations</h4>
+          <a href="#">South Bay</a>
+          <a href="#">Palos Verdes</a>
+          <a href="#">Long Beach</a>
+          <a href="#">Orange County</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ProCarthy. All rights reserved.</span>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+      <div class="footer-watermark">PROCARTHY</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

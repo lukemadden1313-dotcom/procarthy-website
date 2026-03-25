@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Players — ProCarthy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav class="nav visible" id="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><img src="images/nav-logo-white.png" alt="ProCarthy" class="nav-logo-img"></a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="story.html">Story</a>
+        <a href="get-started.html">Get Started</a>
+        <a href="players.html" class="active">Our Players</a>
+        <a href="get-started.html" class="nav-cta">Contact</a>
+      </div>
+      <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero" style="min-height: 60vh;">
+    <div class="hero-bg">
+      <img src="images/horizontal-1.jpeg" alt="ProCarthy team huddle">
+    </div>
+    <div class="container hero-content">
+      <span class="eyebrow">The Athletes</span>
+      <h1>
+        <span class="hero-line"><span class="hero-line-inner">Our</span></span>
+        <span class="hero-line"><span class="hero-line-inner"><em>Players.</em></span></span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Filter -->
+  <section class="compact">
+    <div class="container">
+      <div class="locations-strip" id="filterBar">
+        <span class="location-tag active" data-filter="all">All</span>
+        <span class="location-tag" data-filter="south-bay">South Bay</span>
+        <span class="location-tag" data-filter="palos-verdes">Palos Verdes</span>
+        <span class="location-tag" data-filter="long-beach">Long Beach</span>
+        <span class="location-tag" data-filter="orange-county">Orange County</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section style="padding-top: 0;">
+    <div class="player-grid" id="playersGrid">
+      <div class="player-card reveal" data-location="south-bay">
+        <img src="images/hero-home.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>South Bay</span></div>
+      </div>
+      <div class="player-card reveal stagger-1" data-location="palos-verdes">
+        <img src="images/image-break-home.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Palos Verdes</span></div>
+      </div>
+      <div class="player-card reveal stagger-2" data-location="long-beach">
+        <img src="images/athlete-back.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Long Beach</span></div>
+      </div>
+      <div class="player-card reveal stagger-3" data-location="orange-county">
+        <img src="images/goalkeeper-training.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Orange County</span></div>
+      </div>
+      <div class="player-card reveal" data-location="south-bay">
+        <img src="images/hero-getstarted.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>South Bay</span></div>
+      </div>
+      <div class="player-card reveal stagger-1" data-location="palos-verdes">
+        <img src="images/training-action.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Palos Verdes</span></div>
+      </div>
+      <div class="player-card reveal stagger-2" data-location="long-beach">
+        <img src="images/training-battle.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Long Beach</span></div>
+      </div>
+      <div class="player-card reveal stagger-3" data-location="orange-county">
+        <img src="images/action-bw.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Orange County</span></div>
+      </div>
+      <div class="player-card reveal" data-location="south-bay">
+        <img src="images/training-split.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>South Bay</span></div>
+      </div>
+      <div class="player-card reveal stagger-1" data-location="long-beach">
+        <img src="images/training-drill.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Long Beach</span></div>
+      </div>
+      <div class="player-card reveal stagger-2" data-location="palos-verdes">
+        <img src="images/athlete-dark-portrait.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Palos Verdes</span></div>
+      </div>
+      <div class="player-card reveal stagger-3" data-location="orange-county">
+        <img src="images/training-1v1.jpeg" alt="Player">
+        <div class="player-card-overlay"><h4>Athlete</h4><span>Orange County</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container reveal">
+      <span class="eyebrow">Your Turn</span>
+      <h2>See Your Name<br><em>Here.</em></h2>
+      <p>Join the athletes chasing greatness with ProCarthy.</p>
+      <a href="get-started.html" class="btn btn-primary">Get Started <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo"><img src="images/pc-text.png" alt="ProCarthy Inc." class="nav-logo-img"></a>
+          <p>Elite soccer development for serious athletes. Built by former professionals.</p>
+        </div>
+        <div class="footer-col"><h4>Pages</h4><a href="index.html">Home</a><a href="story.html">Story</a><a href="get-started.html">Get Started</a><a href="players.html">Our Players</a></div>
+        <div class="footer-col"><h4>Locations</h4><a href="#">South Bay</a><a href="#">Palos Verdes</a><a href="#">Long Beach</a><a href="#">Orange County</a></div>
+        <div class="footer-col"><h4>Connect</h4><a href="#">Instagram</a><a href="#">Contact</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 ProCarthy. All rights reserved.</span><div class="footer-socials"><a href="#">IG</a></div></div>
+      <div class="footer-watermark">PROCARTHY</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
