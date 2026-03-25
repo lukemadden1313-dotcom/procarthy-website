@@ -983,6 +983,76 @@ section.flush { padding: 0; }
 
 .image-break-content h2 { margin-bottom: 16px; }
 
+/* --- Shop --- */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.shop-card {
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.shop-card:hover {
+  border-color: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+}
+
+.shop-card-img {
+  aspect-ratio: 1 / 1;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-coming-soon {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--light-gray);
+  padding: 10px 24px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.shop-card-info {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.shop-card-info h4 {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.shop-price {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .shop-grid { grid-template-columns: 1fr; }
+}
+
 /* --- CTA Section --- */
 .cta-section {
   text-align: center;
