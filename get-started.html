@@ -132,7 +132,7 @@
   <section>
     <div class="container" style="max-width: 640px;">
       <div class="section-header centered reveal">
-        <span class="eyebrow">Apply Now</span>
+        <span class="eyebrow">Returning Spring 2026</span>
         <h2>Start Your Application</h2>
         <p>Fill out the form below. Our team will reach out to schedule your free evaluation.</p>
       </div>
@@ -141,16 +141,34 @@
           <input type="text" placeholder="First Name" required class="form-field">
           <input type="text" placeholder="Last Name" required class="form-field">
         </div>
-        <input type="email" placeholder="Email" required class="form-field">
-        <input type="tel" placeholder="Phone" class="form-field">
-        <select class="form-field" style="color: var(--gray); appearance: none;">
-          <option value="" disabled selected>Preferred Location</option>
+        <input type="tel" placeholder="Phone — e.g., (777) 777-7777" required class="form-field">
+        <select class="form-field" required style="color: var(--gray); appearance: none;">
+          <option value="" disabled selected>Select a Service</option>
+          <option>Private Training</option>
+          <option>Group Training</option>
+          <option>Goalkeeper Training</option>
+          <option>College Recruitment Support</option>
+          <option>Full Program</option>
+        </select>
+        <select class="form-field" required style="color: var(--gray); appearance: none;">
+          <option value="" disabled selected>Current Level / Committed To</option>
+          <option>Youth / Club</option>
+          <option>High School</option>
+          <option>College Committed</option>
+          <option>College (Current)</option>
+          <option>Semi-Pro / Professional</option>
+        </select>
+        <input type="text" placeholder="Team / School — e.g., University of..." required class="form-field">
+        <input type="text" placeholder="Age — e.g., 16 years old" required class="form-field">
+        <select class="form-field" required style="color: var(--gray); appearance: none;">
+          <option value="" disabled selected>Desired Location</option>
           <option>South Bay</option>
           <option>Palos Verdes</option>
           <option>Long Beach</option>
           <option>Orange County</option>
         </select>
-        <textarea placeholder="Athletic background and goals..." rows="4" class="form-field" style="resize: vertical;"></textarea>
+        <input type="text" placeholder="Do you know someone that trains with ProCarthy? — N/A or who?" class="form-field">
+        <textarea placeholder="Why ProCarthy?" rows="4" class="form-field" style="resize: vertical;"></textarea>
         <button type="submit" class="btn btn-primary" style="justify-content: center; width: 100%;">Submit Application <span class="arrow">→</span></button>
       </form>
     </div>
