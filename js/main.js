@@ -238,40 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Interactive Locations Map ---
-  const mapPins = document.querySelectorAll('.map-pin');
-  mapPins.forEach(pin => {
-    pin.addEventListener('click', () => {
-      const loc = pin.dataset.location;
-      const region = document.getElementById('region-' + loc);
-
-      const wasActive = pin.classList.contains('active');
-
-      mapPins.forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.map-region').forEach(r => r.classList.remove('active'));
-
-      if (!wasActive) {
-        pin.classList.add('active');
-        if (region) region.classList.add('active');
-      }
-    });
-
-    pin.addEventListener('mouseenter', () => {
-      const loc = pin.dataset.location;
-      const region = document.getElementById('region-' + loc);
-      if (region && !pin.classList.contains('active')) {
-        region.style.fill = 'rgba(230, 0, 126, 0.06)';
-        region.style.stroke = 'rgba(230, 0, 126, 0.15)';
-        region.style.strokeWidth = '1';
-      }
-    });
-
-    pin.addEventListener('mouseleave', () => {
-      const loc = pin.dataset.location;
-      const region = document.getElementById('region-' + loc);
-      if (region && !pin.classList.contains('active')) {
-        region.style.fill = 'transparent';
-        region.style.stroke = 'none';
-      }
+  const mapMarkers = document.querySelectorAll('.map-marker');
+  mapMarkers.forEach(marker => {
+    marker.addEventListener('click', () => {
+      const wasActive = marker.classList.contains('active');
+      mapMarkers.forEach(m => m.classList.remove('active'));
+      if (!wasActive) marker.classList.add('active');
     });
   });
 

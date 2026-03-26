@@ -774,82 +774,106 @@ section.flush { padding: 0; }
 
 /* --- Locations Map --- */
 .locations-map {
-  max-width: 800px;
   margin: 48px auto 0;
 }
 
-.socal-map {
+.map-container {
+  position: relative;
   width: 100%;
-  height: auto;
+  height: 500px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.map-topo {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.04);
-  stroke-width: 1;
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.map-coast-accent {
-  fill: none;
-  stroke: rgba(230, 0, 126, 0.08);
-  stroke-width: 1.5;
+.map-pin-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
 }
 
-.map-region {
-  fill: transparent;
-  stroke: none;
-  transition: fill 0.5s ease, stroke 0.5s ease;
+.map-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: all;
+  cursor: pointer;
+  z-index: 3;
 }
 
-.map-region.active {
-  fill: rgba(230, 0, 126, 0.12);
-  stroke: rgba(230, 0, 126, 0.3);
-  stroke-width: 1;
+.marker-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 8px rgba(230, 0, 126, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.pin-dot {
-  fill: rgba(255, 255, 255, 0.4);
-  transition: fill 0.3s ease, r 0.3s ease;
+.marker-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 0, 126, 0.25) 0%, transparent 70%);
+  animation: markerPulse 2s ease-out infinite;
 }
 
-.pin-pulse {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 1;
-  transition: stroke 0.3s ease;
+.map-marker:hover .marker-dot,
+.map-marker.active .marker-dot {
+  transform: scale(1.4);
+  box-shadow: 0 0 20px rgba(230, 0, 126, 0.8), 0 0 40px rgba(230, 0, 126, 0.3);
 }
 
-.map-pin:hover .pin-dot,
-.map-pin.active .pin-dot {
-  fill: var(--accent);
+.map-marker:hover .marker-glow,
+.map-marker.active .marker-glow {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(230, 0, 126, 0.3) 0%, transparent 70%);
 }
 
-.map-pin:hover .pin-pulse,
-.map-pin.active .pin-pulse {
-  stroke: var(--accent);
-  animation: pinPulse 1.5s ease-out infinite;
-}
-
-.pin-label {
-  fill: rgba(255, 255, 255, 0.4);
+.marker-label {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  text-anchor: middle;
-  letter-spacing: 0.1em;
+  font-size: 0.625rem;
+  font-weight: 700;
   text-transform: uppercase;
-  transition: fill 0.3s ease, font-size 0.3s ease;
+  letter-spacing: 0.15em;
+  color: var(--pure-white);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease, font-size 0.3s ease, top 0.3s ease;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
 
-.map-pin:hover .pin-label,
-.map-pin.active .pin-label {
-  fill: var(--pure-white);
-  font-size: 14px;
+.map-marker:hover .marker-label,
+.map-marker.active .marker-label {
+  opacity: 1;
+  font-size: 0.75rem;
+  top: -36px;
 }
 
-@keyframes pinPulse {
-  0% { r: 16; opacity: 1; }
-  100% { r: 30; opacity: 0; }
+@keyframes markerPulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .map-container { height: 350px; }
 }
 
 /* --- Locations Strip (legacy) --- */
