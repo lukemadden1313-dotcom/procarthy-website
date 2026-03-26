@@ -259,7 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const loc = pin.dataset.location;
       const region = document.getElementById('region-' + loc);
       if (region && !pin.classList.contains('active')) {
-        region.style.fill = 'rgba(230, 0, 126, 0.08)';
+        region.style.fill = 'rgba(230, 0, 126, 0.06)';
+        region.style.stroke = 'rgba(230, 0, 126, 0.15)';
+        region.style.strokeWidth = '1';
       }
     });
 
@@ -268,6 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const region = document.getElementById('region-' + loc);
       if (region && !pin.classList.contains('active')) {
         region.style.fill = 'transparent';
+        region.style.stroke = 'none';
       }
     });
   });

@@ -212,63 +212,46 @@
         <p>Four dedicated locations. One standard of excellence.</p>
       </div>
       <div class="locations-map reveal">
-        <svg viewBox="0 0 800 600" class="socal-map" xmlns="http://www.w3.org/2000/svg">
-          <!-- California state outline -->
-          <path class="map-coastline" d="
-            M220,10 L460,10 L465,15
-            Q468,20 470,25 L690,530
-            Q692,535 690,540 Q685,555 675,565
-            Q660,575 640,580 Q615,582 590,575
-            Q565,568 545,555 Q530,545 520,535
-            Q510,525 495,520 Q480,515 465,518
-            Q450,522 435,530 Q420,540 400,545
-            Q380,548 360,545 Q340,540 325,530
-            Q315,522 308,512 Q300,500 290,495
-            Q275,488 260,492 Q248,496 238,505
-            Q228,515 215,520 Q200,525 185,518
-            Q170,510 165,495 Q162,480 168,465
-            Q175,448 170,430 Q165,415 155,405
-            Q140,392 130,378 Q120,362 115,345
-            Q110,328 108,310 Q107,290 112,275
-            Q118,258 110,242 Q100,228 95,210
-            Q90,195 88,178 Q86,160 90,145
-            Q95,128 92,112 Q88,95 80,82
-            Q72,70 68,58 Q65,48 68,40
-            Q72,32 80,28 Q90,22 102,25
-            Q110,28 115,22 Q118,18 112,12
-            Q108,8 115,5 Q122,2 130,8
-            Q135,15 140,12 Q145,8 148,15
-            Q150,22 155,18 Q158,12 162,20
-            Q165,30 172,25 Q178,18 185,25
-            Q192,35 198,28 Q205,18 215,15 Z
-          " />
+        <svg viewBox="0 0 900 450" class="socal-map" xmlns="http://www.w3.org/2000/svg">
+          <!-- Topographic contour lines -->
+          <path class="map-topo" d="M0,380 Q80,360 160,370 Q240,378 320,365 Q400,350 480,358 Q560,368 640,355 Q720,342 800,350 Q860,356 900,360" />
+          <path class="map-topo" d="M0,340 Q90,318 180,328 Q270,340 360,322 Q450,305 540,315 Q630,328 720,312 Q800,298 900,310" />
+          <path class="map-topo" d="M0,290 Q100,270 200,280 Q300,292 400,272 Q500,255 600,268 Q700,282 800,265 Q860,258 900,262" />
+          <path class="map-topo" d="M0,240 Q110,225 220,235 Q330,248 440,228 Q550,210 660,225 Q770,240 900,220" />
+          <path class="map-topo" d="M0,195 Q120,182 240,192 Q360,205 480,185 Q600,168 720,182 Q820,195 900,180" />
+          <path class="map-topo" d="M0,155 Q130,140 260,150 Q390,162 520,142 Q650,125 780,140 Q850,148 900,142" />
+          <path class="map-topo" d="M0,115 Q140,100 280,110 Q420,122 560,102 Q700,85 840,100 Q880,105 900,102" />
+          <path class="map-topo" d="M0,78 Q150,62 300,72 Q450,85 600,65 Q750,48 900,62" />
 
-          <!-- Region highlight areas -->
-          <path class="map-region" id="region-south-bay" d="M265,460 Q285,445 310,448 Q330,452 340,468 Q345,485 332,498 Q315,508 295,505 Q275,500 268,485 Q262,472 265,460 Z" />
-          <path class="map-region" id="region-palos-verdes" d="M230,490 Q250,478 270,485 Q285,492 288,510 Q285,525 270,532 Q252,536 238,528 Q225,518 224,505 Q223,496 230,490 Z" />
-          <path class="map-region" id="region-long-beach" d="M330,470 Q355,458 380,465 Q400,472 405,490 Q402,510 385,520 Q365,526 345,518 Q328,508 325,490 Q324,478 330,470 Z" />
-          <path class="map-region" id="region-orange-county" d="M400,480 Q435,462 475,470 Q510,480 520,510 Q518,540 495,555 Q465,565 435,555 Q408,540 400,512 Q396,495 400,480 Z" />
+          <!-- Coastline accent -->
+          <path class="map-coast-accent" d="M0,395 Q100,385 200,392 Q300,400 400,388 Q500,375 600,385 Q700,396 800,388 Q860,382 900,385" />
+
+          <!-- Region glow areas -->
+          <circle class="map-region" id="region-south-bay" cx="120" cy="220" r="55" />
+          <circle class="map-region" id="region-palos-verdes" cx="320" cy="200" r="55" />
+          <circle class="map-region" id="region-long-beach" cx="540" cy="220" r="55" />
+          <circle class="map-region" id="region-orange-county" cx="750" cy="200" r="55" />
 
           <!-- Pins -->
           <g class="map-pin" data-location="south-bay" style="cursor: pointer;">
-            <circle cx="300" cy="472" r="6" class="pin-dot" />
-            <circle cx="300" cy="472" r="14" class="pin-pulse" />
-            <text x="300" y="452" class="pin-label">South Bay</text>
+            <circle cx="120" cy="220" r="6" class="pin-dot" />
+            <circle cx="120" cy="220" r="14" class="pin-pulse" />
+            <text x="120" y="270" class="pin-label">South Bay</text>
           </g>
           <g class="map-pin" data-location="palos-verdes" style="cursor: pointer;">
-            <circle cx="255" cy="508" r="6" class="pin-dot" />
-            <circle cx="255" cy="508" r="14" class="pin-pulse" />
-            <text x="255" y="488" class="pin-label">Palos Verdes</text>
+            <circle cx="320" cy="200" r="6" class="pin-dot" />
+            <circle cx="320" cy="200" r="14" class="pin-pulse" />
+            <text x="320" y="250" class="pin-label">Palos Verdes</text>
           </g>
           <g class="map-pin" data-location="long-beach" style="cursor: pointer;">
-            <circle cx="365" cy="490" r="6" class="pin-dot" />
-            <circle cx="365" cy="490" r="14" class="pin-pulse" />
-            <text x="365" y="470" class="pin-label">Long Beach</text>
+            <circle cx="540" cy="220" r="6" class="pin-dot" />
+            <circle cx="540" cy="220" r="14" class="pin-pulse" />
+            <text x="540" y="270" class="pin-label">Long Beach</text>
           </g>
           <g class="map-pin" data-location="orange-county" style="cursor: pointer;">
-            <circle cx="460" cy="510" r="6" class="pin-dot" />
-            <circle cx="460" cy="510" r="14" class="pin-pulse" />
-            <text x="460" y="490" class="pin-label">Orange County</text>
+            <circle cx="750" cy="200" r="6" class="pin-dot" />
+            <circle cx="750" cy="200" r="14" class="pin-pulse" />
+            <text x="750" y="250" class="pin-label">Orange County</text>
           </g>
         </svg>
       </div>

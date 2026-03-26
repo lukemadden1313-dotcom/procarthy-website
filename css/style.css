@@ -783,21 +783,27 @@ section.flush { padding: 0; }
   height: auto;
 }
 
-.map-coastline {
+.map-topo {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.08);
+  stroke: rgba(255, 255, 255, 0.04);
+  stroke-width: 1;
+}
+
+.map-coast-accent {
+  fill: none;
+  stroke: rgba(230, 0, 126, 0.08);
   stroke-width: 1.5;
 }
 
 .map-region {
   fill: transparent;
   stroke: none;
-  transition: fill 0.4s ease;
+  transition: fill 0.5s ease, stroke 0.5s ease;
 }
 
 .map-region.active {
-  fill: rgba(230, 0, 126, 0.15);
-  stroke: var(--accent);
+  fill: rgba(230, 0, 126, 0.12);
+  stroke: rgba(230, 0, 126, 0.3);
   stroke-width: 1;
 }
 
