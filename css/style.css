@@ -772,63 +772,86 @@ section.flush { padding: 0; }
 .accent-band h2 { color: var(--pure-white); }
 .accent-band p { color: var(--light-gray); }
 
-/* --- LA Map --- */
-.la-map-wrap {
-  margin-top: 48px;
+/* --- Route Map --- */
+.route-map {
+  margin-top: 72px;
+  position: relative;
+  padding: 0 24px;
 }
 
-.la-map {
-  width: 100%;
-  height: auto;
-  max-width: 900px;
-  margin: 0 auto;
-  display: block;
+.route-stops {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
-.la-outline {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.2);
-  stroke-width: 2.5;
+.route-line {
+  position: absolute;
+  top: 5px;
+  left: 48px;
+  right: 48px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
 }
 
-.la-freeway {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.2;
-  opacity: 0.3;
+.route-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--accent), rgba(230, 0, 126, 0.2) 50%, var(--accent));
+  opacity: 0.4;
 }
 
-.la-city {
-  font-family: 'Inter', sans-serif;
-  font-size: 9px;
-  fill: rgba(255, 255, 255, 0.2);
-  text-anchor: middle;
-  letter-spacing: 0.05em;
+.route-stop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  cursor: default;
 }
 
-.pc-pin-dot {
-  fill: var(--accent);
-  filter: drop-shadow(0 0 6px rgba(230, 0, 126, 0.8));
+.route-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.4s ease;
+  position: relative;
 }
 
-.pc-pin-glow-outer {
-  fill: rgba(230, 0, 126, 0.15);
-  stroke: none;
+.route-stop:hover .route-node {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(230, 0, 126, 0.6), 0 0 30px rgba(230, 0, 126, 0.2);
 }
 
-.pc-pin-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  fill: var(--pure-white);
-  text-anchor: middle;
-  letter-spacing: 0.1em;
+.route-stop:hover .route-name {
+  color: var(--pure-white);
+}
+
+.route-name {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 0.4s ease;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
-  .la-city { font-size: 7px; }
-  .pc-pin-label { font-size: 8px; }
+  .route-stops { flex-wrap: wrap; gap: 40px; justify-content: center; }
+  .route-stop { flex: 0 0 calc(33.33% - 28px); }
+  .route-line { display: none; }
+}
+
+@media (max-width: 480px) {
+  .route-stop { flex: 0 0 calc(50% - 20px); }
 }
 
 /* --- Locations Strip (legacy) --- */
