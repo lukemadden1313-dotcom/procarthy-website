@@ -1260,7 +1260,7 @@ section.flush { padding: 0; }
   font-family: var(--font-display);
   font-size: clamp(4rem, 12vw, 12rem);
   font-weight: 700;
-  color: rgba(255,255,255,0.015);
+  color: rgba(230, 0, 126, 0.08);
   text-align: center;
   margin-top: 48px;
   letter-spacing: -0.04em;
