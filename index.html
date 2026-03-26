@@ -83,11 +83,11 @@
       <div class="hero-bottom">
         <div class="hero-stats">
           <div class="hero-stat">
-            <span class="number">4<sup>+</sup></span>
+            <span class="number">6</span>
             <span class="label">Locations</span>
           </div>
           <div class="hero-stat">
-            <span class="number">100<sup>+</sup></span>
+            <span class="number">250<sup>+</sup></span>
             <span class="label">Athletes</span>
           </div>
           <div class="hero-stat">
@@ -171,28 +171,6 @@
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="flush">
-    <div class="stats-row">
-      <div class="stat-block reveal stagger-1">
-        <div class="number">4<sup>+</sup></div>
-        <div class="label">Training Locations</div>
-      </div>
-      <div class="stat-block reveal stagger-2">
-        <div class="number">100<sup>+</sup></div>
-        <div class="label">Active Athletes</div>
-      </div>
-      <div class="stat-block reveal stagger-3">
-        <div class="number">50<sup>+</sup></div>
-        <div class="label">College Commits</div>
-      </div>
-      <div class="stat-block reveal stagger-4">
-        <div class="number">2022</div>
-        <div class="label">Established</div>
-      </div>
-    </div>
-  </section>
-
   <!-- Image Break -->
   <div class="image-break">
     <img src="images/full-goalie.jpg" alt="ProCarthy goalkeeper">
@@ -209,7 +187,7 @@
       <div class="section-header reveal">
         <span class="eyebrow">Where We Train</span>
         <h2>Across Southern California</h2>
-        <p>Four dedicated locations. One standard of excellence.</p>
+        <p>Six dedicated locations. One standard of excellence.</p>
       </div>
       <div class="locations-map reveal">
         <svg viewBox="0 0 500 700" class="topo-map" xmlns="http://www.w3.org/2000/svg">
@@ -246,25 +224,35 @@
           </g>
 
           <!-- Location pins in SoCal region -->
+          <g class="map-pin-group" data-location="the-valley" style="cursor:pointer;">
+            <circle cx="280" cy="490" r="6" class="topo-pin" />
+            <circle cx="280" cy="490" r="12" class="topo-pin-ring" />
+            <text x="280" y="475" class="topo-label">The Valley</text>
+          </g>
+          <g class="map-pin-group" data-location="west-la" style="cursor:pointer;">
+            <circle cx="260" cy="525" r="6" class="topo-pin" />
+            <circle cx="260" cy="525" r="12" class="topo-pin-ring" />
+            <text x="260" y="510" class="topo-label">West LA</text>
+          </g>
           <g class="map-pin-group" data-location="south-bay" style="cursor:pointer;">
-            <circle cx="310" cy="555" r="6" class="topo-pin" />
-            <circle cx="310" cy="555" r="12" class="topo-pin-ring" />
-            <text x="310" y="540" class="topo-label">South Bay</text>
+            <circle cx="295" cy="558" r="6" class="topo-pin" />
+            <circle cx="295" cy="558" r="12" class="topo-pin-ring" />
+            <text x="295" y="543" class="topo-label">South Bay</text>
           </g>
           <g class="map-pin-group" data-location="palos-verdes" style="cursor:pointer;">
-            <circle cx="268" cy="595" r="6" class="topo-pin" />
-            <circle cx="268" cy="595" r="12" class="topo-pin-ring" />
-            <text x="240" y="618" class="topo-label">Palos Verdes</text>
+            <circle cx="258" cy="595" r="6" class="topo-pin" />
+            <circle cx="258" cy="595" r="12" class="topo-pin-ring" />
+            <text x="230" y="615" class="topo-label">Palos Verdes</text>
           </g>
           <g class="map-pin-group" data-location="long-beach" style="cursor:pointer;">
-            <circle cx="380" cy="580" r="6" class="topo-pin" />
-            <circle cx="380" cy="580" r="12" class="topo-pin-ring" />
-            <text x="380" y="565" class="topo-label">Long Beach</text>
+            <circle cx="370" cy="578" r="6" class="topo-pin" />
+            <circle cx="370" cy="578" r="12" class="topo-pin-ring" />
+            <text x="370" y="563" class="topo-label">Long Beach</text>
           </g>
           <g class="map-pin-group" data-location="orange-county" style="cursor:pointer;">
-            <circle cx="430" cy="545" r="6" class="topo-pin" />
-            <circle cx="430" cy="545" r="12" class="topo-pin-ring" />
-            <text x="430" y="530" class="topo-label">Orange County</text>
+            <circle cx="430" cy="548" r="6" class="topo-pin" />
+            <circle cx="430" cy="548" r="12" class="topo-pin-ring" />
+            <text x="430" y="533" class="topo-label">Orange County</text>
           </g>
         </svg>
       </div>
@@ -301,6 +289,8 @@
         </div>
         <div class="footer-col">
           <h4>Locations</h4>
+          <a href="#">The Valley</a>
+          <a href="#">West LA</a>
           <a href="#">South Bay</a>
           <a href="#">Palos Verdes</a>
           <a href="#">Long Beach</a>
