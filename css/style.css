@@ -776,30 +776,22 @@ section.flush { padding: 0; }
 .loc-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(255, 255, 255, 0.04);
-  margin-top: 48px;
+  gap: 48px 32px;
+  margin-top: 64px;
 }
 
 .loc-card {
-  background: var(--dark);
-  padding: 48px 32px;
+  padding: 32px 16px;
   text-align: center;
-  transition: background 0.4s ease;
-  position: relative;
-}
-
-.loc-card:hover {
-  background: var(--dark-card);
 }
 
 .loc-card h3 {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--pure-white);
-  margin-bottom: 6px;
-  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
 }
 
 .loc-card span {
@@ -811,9 +803,9 @@ section.flush { padding: 0; }
 
 .loc-blip {
   position: relative;
-  width: 40px;
-  height: 40px;
-  margin: 0 auto 24px;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 28px;
 }
 
 .loc-blip-dot {
@@ -821,11 +813,11 @@ section.flush { padding: 0; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   background: var(--accent);
   border-radius: 50%;
-  box-shadow: 0 0 12px rgba(230, 0, 126, 0.6);
+  box-shadow: 0 0 16px rgba(230, 0, 126, 0.6);
 }
 
 .loc-blip-ring {
@@ -833,9 +825,9 @@ section.flush { padding: 0; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  border: 1px solid var(--accent);
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--accent);
   border-radius: 50%;
   opacity: 0;
   animation: radarBlip 2.5s ease-out infinite;
@@ -846,12 +838,12 @@ section.flush { padding: 0; }
 }
 
 .loc-card:hover .loc-blip-dot {
-  box-shadow: 0 0 20px rgba(230, 0, 126, 0.9), 0 0 40px rgba(230, 0, 126, 0.3);
+  box-shadow: 0 0 24px rgba(230, 0, 126, 0.9), 0 0 50px rgba(230, 0, 126, 0.3);
 }
 
 @keyframes radarBlip {
-  0% { width: 8px; height: 8px; opacity: 0.8; }
-  100% { width: 40px; height: 40px; opacity: 0; }
+  0% { width: 12px; height: 12px; opacity: 0.8; }
+  100% { width: 60px; height: 60px; opacity: 0; }
 }
 
 @media (max-width: 768px) {
@@ -859,7 +851,7 @@ section.flush { padding: 0; }
 }
 
 @media (max-width: 480px) {
-  .loc-grid { grid-template-columns: 1fr; }
+  .loc-grid { grid-template-columns: 1fr; gap: 32px 0; }
 }
 
 /* --- Locations Strip (legacy) --- */
