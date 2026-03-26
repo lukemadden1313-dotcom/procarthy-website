@@ -772,90 +772,63 @@ section.flush { padding: 0; }
 .accent-band h2 { color: var(--pure-white); }
 .accent-band p { color: var(--light-gray); }
 
-/* --- Dark Map --- */
-.dark-map-wrap {
+/* --- LA Map --- */
+.la-map-wrap {
   margin-top: 48px;
 }
 
-.dark-map-container {
-  position: relative;
+.la-map {
   width: 100%;
-  height: 550px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.dark-map-iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  pointer-events: none;
-  filter: invert(1) hue-rotate(220deg) brightness(0.45) contrast(1.6) saturate(0.2);
-}
-
-.dark-map-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(5,5,5,0.3) 0%, transparent 20%, transparent 80%, rgba(5,5,5,0.5) 100%),
-    linear-gradient(90deg, rgba(5,5,5,0.4) 0%, transparent 15%, transparent 85%, rgba(5,5,5,0.4) 100%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.map-pin-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.dm-pin {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  pointer-events: all;
-  cursor: default;
-  text-align: center;
-}
-
-.dm-pin-dot {
-  width: 10px;
-  height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
+  height: auto;
+  max-width: 900px;
   margin: 0 auto;
-  box-shadow: 0 0 12px rgba(230, 0, 126, 0.7), 0 0 30px rgba(230, 0, 126, 0.3);
-  position: relative;
-  z-index: 2;
+  display: block;
 }
 
-.dm-pin-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(230, 0, 126, 0.2) 0%, transparent 70%);
-  z-index: 1;
+.la-outline {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 2.5;
 }
 
-.dm-pin-label {
-  margin-top: 10px;
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
+.la-freeway {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  opacity: 0.3;
+}
+
+.la-city {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  fill: rgba(255, 255, 255, 0.2);
+  text-anchor: middle;
+  letter-spacing: 0.05em;
+}
+
+.pc-pin-dot {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px rgba(230, 0, 126, 0.8));
+}
+
+.pc-pin-glow-outer {
+  fill: rgba(230, 0, 126, 0.15);
+  stroke: none;
+}
+
+.pc-pin-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
   font-weight: 800;
+  fill: var(--pure-white);
+  text-anchor: middle;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--pure-white);
-  white-space: nowrap;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 @media (max-width: 768px) {
-  .dark-map-container { height: 400px; }
-  .dm-pin-label { font-size: 0.5625rem; }
+  .la-city { font-size: 7px; }
+  .pc-pin-label { font-size: 8px; }
 }
 
 /* --- Locations Strip (legacy) --- */

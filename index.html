@@ -189,49 +189,77 @@
         <h2>Across Southern California</h2>
         <p>Six dedicated locations. One standard of excellence.</p>
       </div>
-      <div class="dark-map-wrap reveal">
-        <div class="dark-map-container">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d170000!2d-118.28!3d33.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus"
-            class="dark-map-iframe"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-          <div class="dark-map-overlay"></div>
-          <div class="map-pin-layer">
-            <div class="dm-pin" style="top: 18%; left: 38%;">
-              <div class="dm-pin-glow"></div>
-              <div class="dm-pin-dot"></div>
-              <div class="dm-pin-label">The Valley</div>
-            </div>
-            <div class="dm-pin" style="top: 38%; left: 25%;">
-              <div class="dm-pin-glow"></div>
-              <div class="dm-pin-dot"></div>
-              <div class="dm-pin-label">West LA</div>
-            </div>
-            <div class="dm-pin" style="top: 52%; left: 30%;">
-              <div class="dm-pin-glow"></div>
-              <div class="dm-pin-dot"></div>
-              <div class="dm-pin-label">South Bay</div>
-            </div>
-            <div class="dm-pin" style="top: 72%; left: 22%;">
-              <div class="dm-pin-glow"></div>
-              <div class="dm-pin-dot"></div>
-              <div class="dm-pin-label">Palos Verdes</div>
-            </div>
-            <div class="dm-pin" style="top: 62%; left: 68%;">
-              <div class="dm-pin-glow"></div>
-              <div class="dm-pin-dot"></div>
-              <div class="dm-pin-label">Long Beach</div>
-            </div>
-            <div class="dm-pin" style="top: 48%; left: 85%;">
-              <div class="dm-pin-glow"></div>
-              <div class="dm-pin-dot"></div>
-              <div class="dm-pin-label">Orange County</div>
-            </div>
-          </div>
-        </div>
+      <div class="la-map-wrap reveal">
+        <svg viewBox="0 0 900 650" class="la-map" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- LA county outline -->
+          <path class="la-outline" d="M80,40 L520,40 L540,38 L580,42 L620,35 L680,40 L720,38 L780,42 L820,50 L830,80 L835,120 L830,180 L825,220 L830,260 L828,300 L820,340 L810,380 L790,420 L760,450 L720,470 L680,485 L640,500 L600,510 L560,520 L520,530 L480,535 L440,540 L400,545 L360,550 L320,548 L280,540 L240,525 L200,505 L160,480 L130,450 L105,420 L85,380 L72,340 L65,300 L60,260 L58,220 L55,180 L58,140 L62,100 L70,65 Z" />
+
+          <!-- Freeways - pink lines -->
+          <!-- 405 freeway (N-S through west side) -->
+          <path class="la-freeway" d="M280,40 L275,100 L268,180 L260,260 L255,320 L258,380 L270,440 L285,500 L295,545" />
+          <!-- 110 freeway (N-S through center) -->
+          <path class="la-freeway" d="M420,55 L418,120 L415,200 L412,280 L410,360 L415,420 L425,480 L430,530" />
+          <!-- 710 freeway (N-S east side) -->
+          <path class="la-freeway" d="M540,180 L535,240 L530,300 L528,360 L530,420 L535,480 L540,520" />
+          <!-- 105 freeway (E-W) -->
+          <path class="la-freeway" d="M180,340 L260,338 L340,335 L420,332 L500,330 L580,335 L650,340" />
+          <!-- 91 freeway (E-W lower) -->
+          <path class="la-freeway" d="M200,420 L300,418 L400,415 L500,412 L600,415 L700,420 L780,425" />
+          <!-- 10 freeway (E-W upper) -->
+          <path class="la-freeway" d="M60,220 L160,215 L260,210 L360,208 L460,210 L560,215 L660,220 L760,225" />
+          <!-- 101 freeway (diagonal) -->
+          <path class="la-freeway" d="M100,60 L180,100 L260,160 L320,210 L380,245 L440,260 L520,270 L600,268" />
+
+          <!-- City labels - subtle -->
+          <text class="la-city" x="200" y="175">Hawthorne</text>
+          <text class="la-city" x="350" y="290">Gardena</text>
+          <text class="la-city" x="480" y="260">Compton</text>
+          <text class="la-city" x="350" y="395">Torrance</text>
+          <text class="la-city" x="500" y="390">Carson</text>
+          <text class="la-city" x="200" y="380">Manhattan Beach</text>
+          <text class="la-city" x="160" y="440">Hermosa Beach</text>
+          <text class="la-city" x="620" y="355">Lakewood</text>
+          <text class="la-city" x="700" y="290">Downey</text>
+          <text class="la-city" x="340" y="155">West Athens</text>
+          <text class="la-city" x="580" y="175">Paramount</text>
+          <text class="la-city" x="180" y="260">El Segundo</text>
+          <text class="la-city" x="260" y="510">Palos Verdes Estates</text>
+          <text class="la-city" x="490" y="490">San Pedro</text>
+          <text class="la-city" x="650" y="465">Signal Hill</text>
+
+          <!-- ProCarthy location pins -->
+          <g class="pc-pin">
+            <circle cx="380" cy="90" r="8" class="pc-pin-glow-outer" />
+            <circle cx="380" cy="90" r="5" class="pc-pin-dot" />
+            <text x="380" y="78" class="pc-pin-label">The Valley</text>
+          </g>
+          <g class="pc-pin">
+            <circle cx="220" cy="228" r="8" class="pc-pin-glow-outer" />
+            <circle cx="220" cy="228" r="5" class="pc-pin-dot" />
+            <text x="220" y="216" class="pc-pin-label">West LA</text>
+          </g>
+          <g class="pc-pin">
+            <circle cx="280" cy="370" r="8" class="pc-pin-glow-outer" />
+            <circle cx="280" cy="370" r="5" class="pc-pin-dot" />
+            <text x="280" y="358" class="pc-pin-label">South Bay</text>
+          </g>
+          <g class="pc-pin">
+            <circle cx="200" cy="495" r="8" class="pc-pin-glow-outer" />
+            <circle cx="200" cy="495" r="5" class="pc-pin-dot" />
+            <text x="200" y="483" class="pc-pin-label">Palos Verdes</text>
+          </g>
+          <g class="pc-pin">
+            <circle cx="620" cy="440" r="8" class="pc-pin-glow-outer" />
+            <circle cx="620" cy="440" r="5" class="pc-pin-dot" />
+            <text x="620" y="428" class="pc-pin-label">Long Beach</text>
+          </g>
+          <g class="pc-pin">
+            <circle cx="760" cy="350" r="8" class="pc-pin-glow-outer" />
+            <circle cx="760" cy="350" r="5" class="pc-pin-dot" />
+            <text x="760" y="338" class="pc-pin-label">Orange County</text>
+          </g>
+        </svg>
       </div>
     </div>
   </section>
