@@ -237,14 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // --- Interactive Locations Map ---
-  const mapPinGroups = document.querySelectorAll('.map-pin-group');
-  mapPinGroups.forEach(pin => {
-    pin.addEventListener('click', () => {
-      const wasActive = pin.classList.contains('active');
-      mapPinGroups.forEach(p => p.classList.remove('active'));
-      if (!wasActive) pin.classList.add('active');
-    });
-  });
+  // --- Location Cards (no JS needed, CSS-only hover) ---
 
 });

@@ -189,72 +189,37 @@
         <h2>Across Southern California</h2>
         <p>Six dedicated locations. One standard of excellence.</p>
       </div>
-      <div class="locations-map reveal">
-        <svg viewBox="0 0 500 700" class="topo-map" xmlns="http://www.w3.org/2000/svg">
-          <!-- California-ish shape via clipping -->
-          <defs>
-            <clipPath id="caliClip">
-              <path d="M200,5 L370,5 L375,12 L500,600 Q495,620 485,635 Q470,650 450,658 Q425,662 400,655 Q378,648 360,635 Q345,625 335,615 Q322,605 310,600 Q295,595 280,598 Q265,602 250,612 Q235,622 215,628 Q195,632 175,628 Q155,620 148,605 Q144,588 150,572 Q158,555 152,535 Q146,518 135,506 Q118,492 108,476 Q96,458 90,438 Q84,418 82,396 Q80,374 86,355 Q92,336 84,318 Q74,302 68,282 Q62,265 60,246 Q58,226 62,208 Q68,190 64,172 Q58,154 50,140 Q42,126 36,112 Q30,100 34,88 Q38,78 48,72 Q58,66 70,70 Q78,74 84,68 Q88,62 82,54 Q76,48 84,44 Q92,40 100,48 Q108,56 114,52 Q120,46 124,56 Q128,66 134,60 Q140,52 146,62 Q152,74 160,68 Q168,58 176,66 Q186,78 194,70 Q202,58 212,52 L200,5 Z" />
-            </clipPath>
-          </defs>
-
-          <g clip-path="url(#caliClip)">
-            <!-- Topographic contour lines -->
-            <path d="M0,30 Q80,45 160,25 Q240,8 320,30 Q400,50 500,35" class="topo-line" />
-            <path d="M0,65 Q90,80 180,58 Q270,38 360,62 Q450,82 500,70" class="topo-line" />
-            <path d="M0,100 Q100,118 200,95 Q300,72 400,98 Q460,115 500,105" class="topo-line" />
-            <path d="M0,138 Q110,155 220,130 Q330,108 440,135 Q480,148 500,140" class="topo-line" />
-            <path d="M0,175 Q120,195 240,168 Q360,142 480,172 Q500,178 500,175" class="topo-line" />
-            <path d="M0,212 Q100,232 200,205 Q300,180 400,210 Q470,228 500,215" class="topo-line" />
-            <path d="M0,250 Q110,270 220,242 Q330,218 440,248 Q490,262 500,255" class="topo-line" />
-            <path d="M0,288 Q90,308 180,282 Q270,258 360,286 Q450,308 500,295" class="topo-line" />
-            <path d="M0,325 Q100,348 200,318 Q300,292 400,322 Q470,345 500,332" class="topo-line" />
-            <path d="M0,362 Q110,385 220,355 Q330,330 440,360 Q490,378 500,368" class="topo-line" />
-            <path d="M0,400 Q90,422 180,395 Q270,370 360,398 Q450,422 500,408" class="topo-line" />
-            <path d="M0,438 Q100,460 200,432 Q300,406 400,436 Q470,458 500,445" class="topo-line" />
-            <path d="M0,475 Q110,498 220,468 Q330,442 440,472 Q490,492 500,482" class="topo-line" />
-            <path d="M0,512 Q90,535 180,508 Q270,482 360,510 Q450,535 500,520" class="topo-line" />
-            <path d="M0,550 Q100,572 200,545 Q300,518 400,548 Q470,572 500,558" class="topo-line" />
-            <path d="M0,588 Q110,610 220,582 Q330,558 440,585 Q490,605 500,595" class="topo-line" />
-            <path d="M0,625 Q90,648 180,620 Q270,595 360,622 Q450,648 500,635" class="topo-line" />
-            <path d="M0,662 Q100,685 200,658 Q300,632 400,660 Q470,682 500,670" class="topo-line" />
-
-            <!-- California outline -->
-            <path d="M200,5 L370,5 L375,12 L500,600 Q495,620 485,635 Q470,650 450,658 Q425,662 400,655 Q378,648 360,635 Q345,625 335,615 Q322,605 310,600 Q295,595 280,598 Q265,602 250,612 Q235,622 215,628 Q195,632 175,628 Q155,620 148,605 Q144,588 150,572 Q158,555 152,535 Q146,518 135,506 Q118,492 108,476 Q96,458 90,438 Q84,418 82,396 Q80,374 86,355 Q92,336 84,318 Q74,302 68,282 Q62,265 60,246 Q58,226 62,208 Q68,190 64,172 Q58,154 50,140 Q42,126 36,112 Q30,100 34,88 Q38,78 48,72 Q58,66 70,70 Q78,74 84,68 Q88,62 82,54 Q76,48 84,44 Q92,40 100,48 Q108,56 114,52 Q120,46 124,56 Q128,66 134,60 Q140,52 146,62 Q152,74 160,68 Q168,58 176,66 Q186,78 194,70 Q202,58 212,52 L200,5 Z" class="topo-outline" />
-          </g>
-
-          <!-- Location pins in SoCal region -->
-          <g class="map-pin-group" data-location="the-valley" style="cursor:pointer;">
-            <circle cx="280" cy="490" r="6" class="topo-pin" />
-            <circle cx="280" cy="490" r="12" class="topo-pin-ring" />
-            <text x="280" y="475" class="topo-label">The Valley</text>
-          </g>
-          <g class="map-pin-group" data-location="west-la" style="cursor:pointer;">
-            <circle cx="260" cy="525" r="6" class="topo-pin" />
-            <circle cx="260" cy="525" r="12" class="topo-pin-ring" />
-            <text x="260" y="510" class="topo-label">West LA</text>
-          </g>
-          <g class="map-pin-group" data-location="south-bay" style="cursor:pointer;">
-            <circle cx="295" cy="558" r="6" class="topo-pin" />
-            <circle cx="295" cy="558" r="12" class="topo-pin-ring" />
-            <text x="295" y="543" class="topo-label">South Bay</text>
-          </g>
-          <g class="map-pin-group" data-location="palos-verdes" style="cursor:pointer;">
-            <circle cx="258" cy="595" r="6" class="topo-pin" />
-            <circle cx="258" cy="595" r="12" class="topo-pin-ring" />
-            <text x="230" y="615" class="topo-label">Palos Verdes</text>
-          </g>
-          <g class="map-pin-group" data-location="long-beach" style="cursor:pointer;">
-            <circle cx="370" cy="578" r="6" class="topo-pin" />
-            <circle cx="370" cy="578" r="12" class="topo-pin-ring" />
-            <text x="370" y="563" class="topo-label">Long Beach</text>
-          </g>
-          <g class="map-pin-group" data-location="orange-county" style="cursor:pointer;">
-            <circle cx="430" cy="548" r="6" class="topo-pin" />
-            <circle cx="430" cy="548" r="12" class="topo-pin-ring" />
-            <text x="430" y="533" class="topo-label">Orange County</text>
-          </g>
-        </svg>
+      <div class="loc-grid reveal">
+        <div class="loc-card">
+          <div class="loc-blip"><div class="loc-blip-ring"></div><div class="loc-blip-ring delay"></div><div class="loc-blip-dot"></div></div>
+          <h3>The Valley</h3>
+          <span>Southern California</span>
+        </div>
+        <div class="loc-card">
+          <div class="loc-blip"><div class="loc-blip-ring"></div><div class="loc-blip-ring delay"></div><div class="loc-blip-dot"></div></div>
+          <h3>West LA</h3>
+          <span>Southern California</span>
+        </div>
+        <div class="loc-card">
+          <div class="loc-blip"><div class="loc-blip-ring"></div><div class="loc-blip-ring delay"></div><div class="loc-blip-dot"></div></div>
+          <h3>South Bay</h3>
+          <span>Southern California</span>
+        </div>
+        <div class="loc-card">
+          <div class="loc-blip"><div class="loc-blip-ring"></div><div class="loc-blip-ring delay"></div><div class="loc-blip-dot"></div></div>
+          <h3>Palos Verdes</h3>
+          <span>Southern California</span>
+        </div>
+        <div class="loc-card">
+          <div class="loc-blip"><div class="loc-blip-ring"></div><div class="loc-blip-ring delay"></div><div class="loc-blip-dot"></div></div>
+          <h3>Long Beach</h3>
+          <span>Southern California</span>
+        </div>
+        <div class="loc-card">
+          <div class="loc-blip"><div class="loc-blip-ring"></div><div class="loc-blip-ring delay"></div><div class="loc-blip-dot"></div></div>
+          <h3>Orange County</h3>
+          <span>Southern California</span>
+        </div>
       </div>
     </div>
   </section>
