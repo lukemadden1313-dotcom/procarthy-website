@@ -776,100 +776,60 @@ section.flush { padding: 0; }
 .loc-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px 32px;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.04);
   margin-top: 64px;
 }
 
 .loc-card {
-  padding: 32px 16px;
+  background: var(--black);
+  padding: 56px 32px;
   text-align: center;
+  cursor: default;
+  transition: background 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loc-card:hover {
+  background: var(--dark-card);
+}
+
+.loc-card:hover .loc-pip {
+  background: var(--accent);
+  box-shadow: 0 0 16px rgba(230, 0, 126, 0.5);
+}
+
+.loc-card:hover h3 {
+  color: var(--pure-white);
+}
+
+.loc-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: all 0.4s ease;
 }
 
 .loc-card h3 {
   font-family: var(--font-body);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--pure-white);
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-}
-
-.loc-card span {
-  font-size: 0.625rem;
+  font-size: 1.125rem;
+  font-weight: 600;
   color: var(--light-gray);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-}
-
-.loc-blip {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 28px;
-}
-
-.loc-map-outline {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.loc-map-outline path {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.12);
-  stroke-width: 1;
-  transition: stroke 0.4s ease;
-}
-
-.loc-card:hover .loc-map-outline path {
-  stroke: rgba(255, 255, 255, 0.25);
-}
-
-.loc-blip-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 16px rgba(230, 0, 126, 0.6);
-}
-
-.loc-blip-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  border: 1.5px solid var(--accent);
-  border-radius: 50%;
-  opacity: 0;
-  animation: radarBlip 2.5s ease-out infinite;
-}
-
-.loc-blip-ring.delay {
-  animation-delay: 1.25s;
-}
-
-.loc-card:hover .loc-blip-dot {
-  box-shadow: 0 0 24px rgba(230, 0, 126, 0.9), 0 0 50px rgba(230, 0, 126, 0.3);
-}
-
-@keyframes radarBlip {
-  0% { width: 12px; height: 12px; opacity: 0.8; }
-  100% { width: 120px; height: 120px; opacity: 0; }
+  letter-spacing: -0.01em;
+  transition: color 0.4s ease;
 }
 
 @media (max-width: 768px) {
   .loc-grid { grid-template-columns: repeat(2, 1fr); }
+  .loc-card { padding: 40px 24px; }
 }
 
 @media (max-width: 480px) {
-  .loc-grid { grid-template-columns: 1fr; gap: 32px 0; }
+  .loc-grid { grid-template-columns: 1fr; }
 }
 
 /* --- Locations Strip (legacy) --- */
