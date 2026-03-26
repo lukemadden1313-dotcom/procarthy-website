@@ -772,7 +772,81 @@ section.flush { padding: 0; }
 .accent-band h2 { color: var(--pure-white); }
 .accent-band p { color: var(--light-gray); }
 
-/* --- Locations --- */
+/* --- Locations Map --- */
+.locations-map {
+  max-width: 800px;
+  margin: 48px auto 0;
+}
+
+.socal-map {
+  width: 100%;
+  height: auto;
+}
+
+.map-coastline {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1.5;
+}
+
+.map-region {
+  fill: transparent;
+  stroke: none;
+  transition: fill 0.4s ease;
+}
+
+.map-region.active {
+  fill: rgba(230, 0, 126, 0.15);
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+
+.pin-dot {
+  fill: rgba(255, 255, 255, 0.4);
+  transition: fill 0.3s ease, r 0.3s ease;
+}
+
+.pin-pulse {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+  transition: stroke 0.3s ease;
+}
+
+.map-pin:hover .pin-dot,
+.map-pin.active .pin-dot {
+  fill: var(--accent);
+}
+
+.map-pin:hover .pin-pulse,
+.map-pin.active .pin-pulse {
+  stroke: var(--accent);
+  animation: pinPulse 1.5s ease-out infinite;
+}
+
+.pin-label {
+  fill: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-anchor: middle;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: fill 0.3s ease, font-size 0.3s ease;
+}
+
+.map-pin:hover .pin-label,
+.map-pin.active .pin-label {
+  fill: var(--pure-white);
+  font-size: 14px;
+}
+
+@keyframes pinPulse {
+  0% { r: 16; opacity: 1; }
+  100% { r: 30; opacity: 0; }
+}
+
+/* --- Locations Strip (legacy) --- */
 .locations-strip {
   display: flex;
   gap: 0;

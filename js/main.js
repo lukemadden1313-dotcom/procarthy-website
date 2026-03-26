@@ -237,4 +237,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // --- Interactive Locations Map ---
+  const mapPins = document.querySelectorAll('.map-pin');
+  mapPins.forEach(pin => {
+    pin.addEventListener('click', () => {
+      const loc = pin.dataset.location;
+      const region = document.getElementById('region-' + loc);
+
+      const wasActive = pin.classList.contains('active');
+
+      mapPins.forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.map-region').forEach(r => r.classList.remove('active'));
+
+      if (!wasActive) {
+        pin.classList.add('active');
+        if (region) region.classList.add('active');
+      }
+    });
+
+    pin.addEventListener('mouseenter', () => {
+      const loc = pin.dataset.location;
+      const region = document.getElementById('region-' + loc);
+      if (region && !pin.classList.contains('active')) {
+        region.style.fill = 'rgba(230, 0, 126, 0.08)';
+      }
+    });
+
+    pin.addEventListener('mouseleave', () => {
+      const loc = pin.dataset.location;
+      const region = document.getElementById('region-' + loc);
+      if (region && !pin.classList.contains('active')) {
+        region.style.fill = 'transparent';
+      }
+    });
+  });
+
 });
