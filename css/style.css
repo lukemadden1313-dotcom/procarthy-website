@@ -964,10 +964,11 @@ section.flush { padding: 0; }
 }
 
 .player-card-overlay span {
-  font-size: 0.625rem;
-  color: var(--accent);
+  font-size: 0.75rem;
+  color: var(--accent-light);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
 }
 
 /* --- Process Steps --- */
