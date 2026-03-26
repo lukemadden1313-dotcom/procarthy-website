@@ -774,106 +774,66 @@ section.flush { padding: 0; }
 
 /* --- Locations Map --- */
 .locations-map {
+  max-width: 420px;
   margin: 48px auto 0;
 }
 
-.map-container {
-  position: relative;
+.topo-map {
   width: 100%;
-  height: 500px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  height: auto;
 }
 
-.map-iframe {
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+.topo-line {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 0.8;
 }
 
-.map-pin-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
+.topo-outline {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 1.5;
 }
 
-.map-marker {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  pointer-events: all;
-  cursor: pointer;
-  z-index: 3;
+.topo-pin {
+  fill: var(--accent);
+  transition: r 0.3s ease;
 }
 
-.marker-dot {
-  width: 12px;
-  height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 0 8px rgba(230, 0, 126, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.topo-pin-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 
-.marker-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(230, 0, 126, 0.25) 0%, transparent 70%);
-  animation: markerPulse 2s ease-out infinite;
-}
-
-.map-marker:hover .marker-dot,
-.map-marker.active .marker-dot {
-  transform: scale(1.4);
-  box-shadow: 0 0 20px rgba(230, 0, 126, 0.8), 0 0 40px rgba(230, 0, 126, 0.3);
-}
-
-.map-marker:hover .marker-glow,
-.map-marker.active .marker-glow {
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, rgba(230, 0, 126, 0.3) 0%, transparent 70%);
-}
-
-.marker-label {
-  position: absolute;
-  top: -32px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-body);
-  font-size: 0.625rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--pure-white);
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease, font-size 0.3s ease, top 0.3s ease;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
-}
-
-.map-marker:hover .marker-label,
-.map-marker.active .marker-label {
+.map-pin-group:hover .topo-pin-ring,
+.map-pin-group.active .topo-pin-ring {
   opacity: 1;
-  font-size: 0.75rem;
-  top: -36px;
+  animation: topoPulse 1.5s ease-out infinite;
 }
 
-@keyframes markerPulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+.topo-label {
+  fill: rgba(255, 255, 255, 0.6);
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  text-anchor: middle;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: fill 0.3s ease, font-size 0.3s ease;
 }
 
-@media (max-width: 768px) {
-  .map-container { height: 350px; }
+.map-pin-group:hover .topo-label,
+.map-pin-group.active .topo-label {
+  fill: var(--pure-white);
+  font-size: 11px;
+}
+
+@keyframes topoPulse {
+  0% { r: 12; opacity: 0.6; }
+  100% { r: 24; opacity: 0; }
 }
 
 /* --- Locations Strip (legacy) --- */

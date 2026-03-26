@@ -238,12 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- Interactive Locations Map ---
-  const mapMarkers = document.querySelectorAll('.map-marker');
-  mapMarkers.forEach(marker => {
-    marker.addEventListener('click', () => {
-      const wasActive = marker.classList.contains('active');
-      mapMarkers.forEach(m => m.classList.remove('active'));
-      if (!wasActive) marker.classList.add('active');
+  const mapPinGroups = document.querySelectorAll('.map-pin-group');
+  mapPinGroups.forEach(pin => {
+    pin.addEventListener('click', () => {
+      const wasActive = pin.classList.contains('active');
+      mapPinGroups.forEach(p => p.classList.remove('active'));
+      if (!wasActive) pin.classList.add('active');
     });
   });
 
