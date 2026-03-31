@@ -1365,7 +1365,7 @@ section.flush { padding: 0; }
   section { padding: 120px 0; }
   .split { grid-template-columns: 1fr; }
   .split-text { padding: 60px 0; }
-  .feature-grid { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .stats-row .stat-block:nth-child(2) { border-right: none; }
   .process-row { grid-template-columns: 1fr; }
@@ -1377,7 +1377,8 @@ section.flush { padding: 0; }
 
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
-  section { padding: 80px 0; }
+  section { padding: 48px 0; }
+  section.compact { padding: 32px 0; }
 
   .nav-links {
     position: fixed;
@@ -1418,23 +1419,62 @@ section.flush { padding: 0; }
 
   .nav-hamburger { display: flex; }
 
+  /* Hero - shorter on mobile */
+  .hero { min-height: 75vh !important; }
+  .hero-content { padding-bottom: 40px; }
   .hero-bg img { object-position: center center !important; }
   .story-hero-img { object-position: center 40% !important; }
-  .hero-stats { flex-wrap: wrap; gap: 32px; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .hero-scroll-hint { display: none; }
+
+  /* Feature cards - 2 column stays, tighter padding */
+  .feature-card { padding: 32px 24px; }
+  .feature-card .number { font-size: 3rem; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .feature-card p { font-size: 0.8rem; }
+
+  /* Split sections - shorter */
+  .split { min-height: auto !important; }
+  .split-media { height: 50vw; min-height: 200px; }
+  .split-text { padding: 40px 20px; }
+
+  /* Stats - compact */
   .stats-row { grid-template-columns: 1fr 1fr; }
+  .stat-block { padding: 32px 16px; }
+
+  /* Image break - shorter */
+  .image-break { height: 40vh; }
+
+  /* CTA - tighter */
+  .cta-section { padding: 80px 0; }
+
+  /* Players grid */
   .player-grid { grid-template-columns: 1fr 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+
+  /* Route map */
+  .route-map { margin-top: 40px; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-watermark { font-size: 3rem !important; margin-top: 24px; }
+
+  /* Marquee */
+  .marquee-section { padding: 16px 0; }
+
+  /* Hide cursor on touch */
   .cursor-dot, .cursor-ring { display: none; }
-  .cta-section { padding: 120px 0; }
+
+  /* Nav logo smaller on mobile */
+  .nav-logo .nav-logo-img { height: 120px; margin-left: -12px; }
 }
 
 @media (max-width: 480px) {
-  .player-grid { grid-template-columns: 1fr; }
-  .stats-row { grid-template-columns: 1fr; }
-  .stats-row .stat-block { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); }
-  .stats-row .stat-block:last-child { border-bottom: none; }
+  .player-grid { grid-template-columns: 1fr 1fr; }
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .split-media { height: 45vw; }
 }
 
 /* --- Sticky Mobile CTA --- */
