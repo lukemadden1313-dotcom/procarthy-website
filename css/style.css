@@ -659,7 +659,7 @@ section.flush { padding: 0; }
 
 @media (max-width: 768px) {
   .story-hero-desktop { display: none !important; }
-  .story-hero-mobile { display: block !important; object-position: 70% 30%; }
+  .story-hero-mobile { display: block !important; object-position: 85% center; }
 }
 
 .split-media-caption {
