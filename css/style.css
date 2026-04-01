@@ -1425,7 +1425,7 @@ section.flush { padding: 0; }
   .hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
   .hero-subtitle { font-size: 0.8125rem; margin-top: 16px; }
   .hero-bg img { object-position: center center !important; }
-  .story-hero-img { object-position: 35% 40% !important; }
+  .story-hero-img { object-position: 65% 40% !important; }
   .hero-stats { flex-wrap: wrap; gap: 16px; }
   .hero-stat .number { font-size: 1.5rem; }
   .hero-stat .label { font-size: 0.5rem; }
