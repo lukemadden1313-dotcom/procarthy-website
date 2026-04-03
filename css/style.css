@@ -651,8 +651,9 @@ section.flush { padding: 0; }
 }
 
 /* Per-image positioning — desktop */
+.split-mathis { max-height: 620px; }
 .mathis-img { object-position: center 60% !important; }
-.vincent-img { object-position: center 45% !important; }
+.vincent-img { object-position: center 55% !important; }
 .dan-img { object-position: right 40% !important; }
 
 .story-hero-img {
@@ -1475,7 +1476,7 @@ section.flush { padding: 0; }
   .split { min-height: auto !important; grid-template-columns: 1fr; }
   .split[style*="direction: rtl"] { direction: ltr !important; }
   .split[style*="direction: rtl"] > * { direction: ltr !important; }
-  .split { max-height: none; overflow: visible; }
+  .split, .split-mathis { max-height: none; overflow: visible; }
   .split-media { height: 70vw; min-height: 240px; max-height: 340px; }
   .split-media img { object-fit: cover !important; object-position: center 45% !important; }
   /* Mathis full-body — needs more height to show head + feet */
