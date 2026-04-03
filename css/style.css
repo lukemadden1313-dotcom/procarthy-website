@@ -1461,12 +1461,12 @@ section.flush { padding: 0; }
   .nav-hamburger { display: flex; }
 
   /* Hero — respects inline min-height on sub-pages */
-  .hero { min-height: 100vh; }
+  .hero { min-height: 100vh; align-items: stretch; }
   .hero[style*="min-height: 60vh"] { min-height: 55vh !important; }
   .hero[style*="min-height: 70vh"] { min-height: 60vh !important; }
-  .hero-content { padding-bottom: 16px; }
+  .hero-content { padding-bottom: 16px; padding-top: 120px; display: flex; flex-direction: column; }
   .hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
-  .hero-subtitle { font-size: 0.8125rem; margin-top: 32px; max-width: 100%; }
+  .hero-subtitle { font-size: 0.8125rem; margin-top: auto; max-width: 100%; }
   .hero-bg img,
   .hero-bg video { object-position: center center !important; }
   .hero-stats { display: flex; flex-wrap: nowrap; gap: 24px; }
