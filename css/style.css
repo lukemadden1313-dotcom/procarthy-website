@@ -1471,6 +1471,9 @@ section.flush { padding: 0; }
   .split[style*="direction: rtl"] > * { direction: ltr !important; }
   .split-media { height: 70vw; min-height: 240px; max-height: 340px; }
   .split-media img { object-fit: cover !important; object-position: center 45% !important; }
+  /* Mathis full-body — needs more height to show head + feet */
+  .split-media:has(.mathis-img) { max-height: 440px; height: 90vw; }
+  .mathis-img { object-position: center center !important; }
   .split-text { padding: 32px 20px; }
   .split-text h2 { font-size: 1.5rem; margin-bottom: 16px; }
   .split-text p { font-size: 0.8125rem; margin-bottom: 10px; }
