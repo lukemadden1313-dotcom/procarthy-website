@@ -652,7 +652,7 @@ section.flush { padding: 0; }
 }
 
 /* Per-image positioning — desktop */
-.split-mathis .split-media img { object-fit: cover !important; object-position: center bottom !important; }
+.split-mathis .split-media img { object-fit: cover !important; object-position: center 85% !important; }
 .mathis-caption {
   font-family: var(--font-body);
   font-size: 0.5625rem;
