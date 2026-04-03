@@ -651,7 +651,7 @@ section.flush { padding: 0; }
 }
 
 /* Per-image positioning — desktop */
-.split-mathis { max-height: 620px; }
+.split-mathis { max-height: none; overflow: visible; }
 .mathis-img { object-position: center 60% !important; }
 .vincent-img { object-position: center 55% !important; }
 .dan-img { object-position: right 40% !important; }
