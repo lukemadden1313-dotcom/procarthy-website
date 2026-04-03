@@ -634,6 +634,7 @@ section.flush { padding: 0; }
 .split-media {
   position: relative;
   overflow: hidden;
+  max-height: 520px;
 }
 
 .split-media img {
