@@ -1450,13 +1450,13 @@ section.flush { padding: 0; }
   .hero-subtitle { font-size: 0.8125rem; margin-top: 16px; max-width: 100%; }
   .hero-bg img,
   .hero-bg video { object-position: center center !important; }
-  .hero-stats { flex-wrap: wrap; gap: 16px; }
-  .hero-stat .number { font-size: 1.5rem; }
-  .hero-stat .label { font-size: 0.5rem; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero-stats { display: flex; flex-wrap: nowrap; gap: 24px; }
+  .hero-stat .number { font-size: 1.25rem; }
+  .hero-stat .label { font-size: 0.4375rem; letter-spacing: 0.15em; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 40px; }
   .hero-scroll-hint { display: none; }
   .hero-cta-row { margin-top: 20px; }
-  .hero-cta-row .btn { padding: 14px 28px; font-size: 0.6875rem; }
+  .hero-cta-row .btn { padding: 10px 20px; font-size: 0.625rem; }
 
   /* Feature cards - 2 column, compact */
   .feature-grid { grid-template-columns: 1fr 1fr; }
@@ -1469,8 +1469,8 @@ section.flush { padding: 0; }
   .split { min-height: auto !important; grid-template-columns: 1fr; }
   .split[style*="direction: rtl"] { direction: ltr !important; }
   .split[style*="direction: rtl"] > * { direction: ltr !important; }
-  .split-media { height: auto; min-height: unset; max-height: none; }
-  .split-media img { object-fit: contain !important; height: auto !important; }
+  .split-media { height: 55vw; min-height: 200px; max-height: 260px; }
+  .split-media img { object-fit: cover !important; object-position: center 15% !important; }
   .split-text { padding: 32px 20px; }
   .split-text h2 { font-size: 1.5rem; margin-bottom: 16px; }
   .split-text p { font-size: 0.8125rem; margin-bottom: 10px; }
@@ -1497,10 +1497,8 @@ section.flush { padding: 0; }
   .cta-section { padding: 64px 0; }
   .cta-section h2 { font-size: 1.75rem; }
 
-  /* Process cards */
+  /* Process cards — stacked */
   .process-row { grid-template-columns: 1fr; gap: 0; }
-  .process-card { padding: 32px 24px; }
-  .process-card .step-num { font-size: 4rem; }
 
   /* Players grid — 2 column, taller cards so text doesn't clip */
   .player-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
@@ -1536,15 +1534,15 @@ section.flush { padding: 0; }
   .eyebrow { font-size: 0.5625rem; margin-bottom: 16px; }
 
   /* Footer — compact 2-col layout */
-  .footer { padding: 48px 0 40px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; margin-bottom: 40px; }
-  .footer-brand { grid-column: 1 / -1; }
-  .footer-brand p { margin-top: 12px; }
+  .footer { padding: 40px 0 32px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 24px; margin-bottom: 32px; }
+  .footer-brand { grid-column: 1 / -1; margin-bottom: 4px; }
+  .footer-brand p { margin-top: 8px; font-size: 0.75rem; }
   .footer-brand .nav-logo .nav-logo-img { height: 24px; }
-  .footer-col h4 { margin-bottom: 14px; }
-  .footer-col a { padding: 4px 0; font-size: 0.75rem; }
-  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .footer-watermark { font-size: 2.5rem !important; margin-top: 20px; }
+  .footer-col h4 { margin-bottom: 12px; }
+  .footer-col a { padding: 3px 0; font-size: 0.75rem; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; font-size: 0.625rem; }
+  .footer-watermark { font-size: 2rem !important; margin-top: 16px; }
 
   /* Marquee */
   .marquee-section { padding: 12px 0; }
@@ -1557,9 +1555,16 @@ section.flush { padding: 0; }
   .faq-question span:first-child { font-size: 0.875rem; flex: 1; padding-right: 12px; }
   .faq-answer p { font-size: 0.8125rem; }
 
-  /* Form — stack name fields, style selects & inputs for touch */
+  /* Process cards — tighter to fit in one screen */
+  .process-card { padding: 24px 20px; }
+  .process-card .step-num { font-size: 3rem; top: 12px; right: 16px; }
+  .process-card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+  .process-card p { font-size: 0.8125rem; }
+  .process-card .step-line { margin-bottom: 20px; }
+
+  /* Form — name fields side by side, touch-friendly */
   .form-grid { margin-top: 32px; gap: 20px; }
-  .form-name-row { grid-template-columns: 1fr; gap: 20px; }
+  .form-name-row { grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-field {
     font-size: 1rem;
     padding: 16px 0;
