@@ -1472,7 +1472,7 @@ section.flush { padding: 0; }
   .hero-stats { display: flex; flex-wrap: nowrap; gap: 24px; }
   .hero-stat .number { font-size: 1.25rem; }
   .hero-stat .label { font-size: 0.4375rem; letter-spacing: 0.15em; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 0; padding-top: 0; border-top: none; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 32px; padding-top: 0; border-top: none; }
   .hero-scroll-hint { display: none; }
   .hero-cta-row { margin-top: 40px; }
   .hero-cta-row .btn { padding: 10px 20px; font-size: 0.625rem; }
