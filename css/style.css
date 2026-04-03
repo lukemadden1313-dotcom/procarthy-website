@@ -653,8 +653,16 @@ section.flush { padding: 0; }
 
 /* Per-image positioning — desktop */
 .split-mathis { max-height: none; overflow: visible; }
-.split-mathis .split-media { position: relative; }
-.split-mathis .split-media-caption { position: absolute; bottom: 12px; left: 16px; z-index: 2; }
+.mathis-caption {
+  font-family: var(--font-body);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pure-white);
+  padding: 10px 0 0 48px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
 .mathis-img { object-position: center 60% !important; }
 .vincent-img { object-position: center 55% !important; }
 .dan-img { object-position: right 40% !important; }
