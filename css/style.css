@@ -1469,8 +1469,8 @@ section.flush { padding: 0; }
   .split { min-height: auto !important; grid-template-columns: 1fr; }
   .split[style*="direction: rtl"] { direction: ltr !important; }
   .split[style*="direction: rtl"] > * { direction: ltr !important; }
-  .split-media { height: 55vw; min-height: 200px; max-height: 260px; }
-  .split-media img { object-fit: cover !important; object-position: center 15% !important; }
+  .split-media { height: 70vw; min-height: 240px; max-height: 340px; }
+  .split-media img { object-fit: cover !important; object-position: center 45% !important; }
   .split-text { padding: 32px 20px; }
   .split-text h2 { font-size: 1.5rem; margin-bottom: 16px; }
   .split-text p { font-size: 0.8125rem; margin-bottom: 10px; }
