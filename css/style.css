@@ -1461,20 +1461,20 @@ section.flush { padding: 0; }
   .nav-hamburger { display: flex; }
 
   /* Hero — respects inline min-height on sub-pages */
-  .hero { min-height: 70vh; }
+  .hero { min-height: 100vh; }
   .hero[style*="min-height: 60vh"] { min-height: 55vh !important; }
   .hero[style*="min-height: 70vh"] { min-height: 60vh !important; }
-  .hero-content { padding-bottom: 32px; }
+  .hero-content { padding-bottom: 16px; }
   .hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
-  .hero-subtitle { font-size: 0.8125rem; margin-top: 16px; max-width: 100%; }
+  .hero-subtitle { font-size: 0.8125rem; margin-top: 32px; max-width: 100%; }
   .hero-bg img,
   .hero-bg video { object-position: center center !important; }
   .hero-stats { display: flex; flex-wrap: nowrap; gap: 24px; }
   .hero-stat .number { font-size: 1.25rem; }
   .hero-stat .label { font-size: 0.4375rem; letter-spacing: 0.15em; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 40px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 0; padding-top: 0; border-top: none; }
   .hero-scroll-hint { display: none; }
-  .hero-cta-row { margin-top: 20px; }
+  .hero-cta-row { margin-top: 40px; }
   .hero-cta-row .btn { padding: 10px 20px; font-size: 0.625rem; }
 
   /* Feature cards - 2 column, compact */
