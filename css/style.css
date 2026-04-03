@@ -679,18 +679,18 @@ section.flush { padding: 0; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 80px;
+  padding: 48px 80px;
 }
 
-.split-text h2 { margin-bottom: 28px; }
+.split-text h2 { margin-bottom: 20px; }
 
 .split-text p {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   max-width: 420px;
 }
 
 .split-text .btn {
-  margin-top: 40px;
+  margin-top: 28px;
   align-self: flex-start;
 }
 
