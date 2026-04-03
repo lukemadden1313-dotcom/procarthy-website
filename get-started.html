@@ -6,7 +6,7 @@
   <title>Get Started — ProCarthy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -50,8 +50,8 @@
         <h2>Start Your Application</h2>
         <p>Fill out the form below. Our team will reach out to schedule your evaluation sessions.</p>
       </div>
-      <form class="reveal" style="display: grid; gap: 24px; margin-top: 56px;" onsubmit="event.preventDefault(); alert('Application submitted. We will be in touch.');">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+      <form class="reveal form-grid" onsubmit="event.preventDefault(); alert('Application submitted. We will be in touch.');">
+        <div class="form-name-row">
           <input type="text" placeholder="First Name" required class="form-field">
           <input type="text" placeholder="Last Name" required class="form-field">
         </div>
@@ -85,7 +85,7 @@
         </select>
         <input type="text" placeholder="Do you know someone that trains with ProCarthy? — N/A or who?" class="form-field">
         <textarea placeholder="Why ProCarthy?" rows="4" class="form-field" style="resize: vertical;"></textarea>
-        <button type="submit" class="btn btn-primary" style="justify-content: center; width: 100%;">Submit Application <span class="arrow">→</span></button>
+        <button type="submit" class="btn btn-primary" style="justify-content: center; width: 100%;">Submit Application <span class="arrow">&rarr;</span></button>
       </form>
     </div>
   </section>
