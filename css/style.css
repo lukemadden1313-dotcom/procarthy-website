@@ -636,6 +636,7 @@ section.flush { padding: 0; }
 .split-media {
   position: relative;
   overflow: hidden;
+  background: var(--black);
 }
 
 .split-media img {
