@@ -653,7 +653,8 @@ section.flush { padding: 0; }
 
 /* Per-image positioning — desktop */
 .split-mathis { max-height: none; overflow: visible; }
-.split-mathis .split-media-caption { bottom: 8px; left: 16px; }
+.split-mathis .split-media { position: relative; }
+.split-mathis .split-media-caption { position: absolute; bottom: 12px; left: 16px; z-index: 2; }
 .mathis-img { object-position: center 60% !important; }
 .vincent-img { object-position: center 55% !important; }
 .dan-img { object-position: right 40% !important; }
