@@ -629,12 +629,12 @@ section.flush { padding: 0; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
+  max-height: 520px;
 }
 
 .split-media {
   position: relative;
   overflow: hidden;
-  max-height: 520px;
 }
 
 .split-media img {
