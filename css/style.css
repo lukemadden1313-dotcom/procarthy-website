@@ -1536,6 +1536,8 @@ section.flush { padding: 0; }
   .player-card-overlay span { font-size: 0.5rem; line-height: 1.3; display: block; }
   /* Force overlay visible on mobile (no hover) */
   .player-card:has(img) .player-card-overlay { opacity: 1 !important; }
+  /* Mid-scroll active state — full color reveal */
+  .player-card.active img { filter: grayscale(0%) contrast(1) !important; transform: scale(1.03); }
 
   /* Route map */
   .route-map { margin-top: 32px; }

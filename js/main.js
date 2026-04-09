@@ -237,6 +237,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // --- Location Cards (no JS needed, CSS-only hover) ---
+  // --- Mobile: reveal player card color when scrolled into middle band ---
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    const playerCards = document.querySelectorAll('.player-card');
+    if (playerCards.length) {
+      const updateActive = () => {
+        const vh = window.innerHeight;
+        const bandTop = vh * 0.35;
+        const bandBottom = vh * 0.65;
+        playerCards.forEach(card => {
+          const r = card.getBoundingClientRect();
+          const cardCenter = r.top + r.height / 2;
+          if (cardCenter >= bandTop && cardCenter <= bandBottom) {
+            card.classList.add('active');
+          } else {
+            card.classList.remove('active');
+          }
+        });
+      };
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+    }
+  }
 
 });
