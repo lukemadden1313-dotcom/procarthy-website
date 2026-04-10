@@ -965,7 +965,9 @@ section.flush { padding: 0; }
 .player-card img[alt="Ethan Scally"] { object-position: center 55%; }
 .player-card img[alt="Javen Romero"] { object-position: center 10%; }
 .player-card img[alt="Grayson Doody"] { object-position: center 30%; transform: scale(1.6); }
+.player-card:hover img[alt="Grayson Doody"] { transform: scale(1.65); }
 .player-card img[alt="Skylar Kaplan"] { object-position: center 30%; transform: scale(1.6); }
+.player-card:hover img[alt="Skylar Kaplan"] { transform: scale(1.65); }
 
 .player-card:hover img {
   filter: grayscale(0%) contrast(1);
