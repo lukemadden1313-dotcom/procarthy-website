@@ -960,6 +960,13 @@ section.flush { padding: 0; }
   filter: grayscale(100%) contrast(1.1);
 }
 
+/* Per-player image adjustments */
+.player-card img[alt="Neil Pierre"] { object-position: center 40%; }
+.player-card img[alt="Ethan Scally"] { object-position: center 40%; }
+.player-card img[alt="Javen Romero"] { object-position: center 10%; }
+.player-card img[alt="Grayson Doody"] { object-position: center 30%; transform: scale(1.3); }
+.player-card img[alt="Skylar Kaplan"] { object-position: center 30%; transform: scale(1.3); }
+
 .player-card:hover img {
   filter: grayscale(0%) contrast(1);
   transform: scale(1.05);
