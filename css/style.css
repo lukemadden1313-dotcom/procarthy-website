@@ -998,7 +998,8 @@ section.flush { padding: 0; }
 .player-card:hover img[alt="Aaron Meono"] { transform: scale(1.5); }
 .player-card img[alt="Halle Ostboe"] { object-position: center bottom; transform: scale(1.65); transform-origin: center bottom; }
 .player-card:hover img[alt="Halle Ostboe"] { transform: scale(1.65); transform-origin: center bottom; }
-.player-card img[alt="Naomi Kim"] { object-position: center 30%; }
+.player-card img[alt="Naomi Kim"] { object-position: center 50%; transform: scale(1.3); }
+.player-card:hover img[alt="Naomi Kim"] { transform: scale(1.3); }
 .player-card img[alt="Lauren Nguyen"] { object-position: center 35%; }
 .player-card img[alt="Rachel Jacobson"] { object-position: center 50%; }
 .player-card img[alt="Denise Cervantes"] { object-position: center 40%; }
