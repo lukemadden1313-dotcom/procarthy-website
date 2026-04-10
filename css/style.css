@@ -1015,7 +1015,7 @@ section.flush { padding: 0; }
 .player-card img[alt="Sophia Smelich"] { object-position: center 30%; }
 .player-card img[alt="Sydney Bushman"] { object-position: center 15%; }
 .player-card img[alt="Ollie Knotek"] { object-position: center 15%; }
-.player-card img[alt="Mia Min"] { object-position: center 20%; transform: scale(2); }
+.player-card img[alt="Mia Min"] { object-position: center 0%; transform: scale(2); }
 .player-card:hover img[alt="Mia Min"] { transform: scale(2); }
 .player-card img[alt="Dimitri Kapitsas"] { object-position: center 25%; transform: scale(2); }
 .player-card:hover img[alt="Dimitri Kapitsas"] { transform: scale(2); }
@@ -1023,7 +1023,7 @@ section.flush { padding: 0; }
 .player-card:hover img[alt="Ruth Ciko"] { transform: scale(2); }
 .player-card img[alt="Brazil Crockett"] { object-position: center 25%; transform: scale(1.7); }
 .player-card:hover img[alt="Brazil Crockett"] { transform: scale(1.7); }
-.player-card img[alt="Aiden Abagat"] { object-position: center 15%; transform: scale(2.5); }
+.player-card img[alt="Aiden Abagat"] { object-position: center top; transform: scale(2.5); }
 .player-card:hover img[alt="Aiden Abagat"] { transform: scale(2.5); }
 .player-card img[alt="Mason Dimitrijevic"] { object-position: center 22%; transform: scale(1.7); }
 .player-card:hover img[alt="Mason Dimitrijevic"] { transform: scale(1.7); }
