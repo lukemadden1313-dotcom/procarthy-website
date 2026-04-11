@@ -972,7 +972,7 @@ section.flush { padding: 0; }
 
 /* Per-player image adjustments — NCAA & Youth */
 .player-card img[alt="Grace Murray"] { object-position: center 40%; }
-/* Players with custom overrides still needed (no new manually-cropped photo) */
+/* Players with custom overrides (no manually-cropped photo yet) */
 .player-card img[alt="Stella Barajas"] { object-position: center 10%; }
 .player-card img[alt="Sami Ruiz"] { object-position: center 30%; }
 .player-card img[alt="Kobe Teofilo"] { object-position: center 15%; }
@@ -984,34 +984,16 @@ section.flush { padding: 0; }
 .player-card img[alt="Reese Kennel"] { object-position: center 15%; }
 .player-card img[alt="Shannon Davidson"] { object-position: center 30%; }
 .player-card img[alt="Yaseen Ads"] { object-position: center 30%; }
-.player-card img[alt="Roman Holliday"] { object-position: center 40%; }
 .player-card img[alt="Aaron Meono"] { object-position: center 40%; transform: scale(1.5); }
 .player-card:hover img[alt="Aaron Meono"] { transform: scale(1.5); }
-.player-card img[alt="Rachel Jacobson"] { object-position: center 50%; }
-.player-card img[alt="Denise Cervantes"] { object-position: center 40%; }
-.player-card img[alt="Cesar Arabour"] { object-position: center 30%; }
-.player-card img[alt="Gabe Sherman"] { object-position: center 35%; }
-.player-card img[alt="Marcus Lee"] { object-position: center 35%; }
-.player-card img[alt="Kenny Livernois"] { object-position: center 35%; }
-.player-card img[alt="Jeremy Gonzales"] { object-position: center 10%; }
 .player-card img[alt="TJ Dilley"] { object-position: center 35%; }
 .player-card img[alt="Sophia Smelich"] { object-position: center 30%; }
 .player-card img[alt="Ollie Knotek"] { object-position: center 15%; }
 .player-card img[alt="Justin Cuevas"] { object-position: center 35%; }
-.player-card img[alt="Mia Min"] { object-position: center 65%; transform: scale(2); }
-.player-card:hover img[alt="Mia Min"] { transform: scale(2); }
-.player-card img[alt="Dimitri Kapitsas"] { object-position: center 25%; transform: scale(2); }
-.player-card:hover img[alt="Dimitri Kapitsas"] { transform: scale(2); }
 .player-card img[alt="Ruth Ciko"] { object-position: center 30%; transform: scale(2); }
 .player-card:hover img[alt="Ruth Ciko"] { transform: scale(2); }
-.player-card img[alt="Brazil Crockett"] { object-position: center 25%; transform: scale(1.7); }
-.player-card:hover img[alt="Brazil Crockett"] { transform: scale(1.7); }
-.player-card img[alt="Aiden Abagat"] { object-position: center 80%; transform: scale(2.5); }
-.player-card:hover img[alt="Aiden Abagat"] { transform: scale(2.5); }
 .player-card img[alt="Mason Dimitrijevic"] { object-position: center 22%; transform: scale(1.7); }
 .player-card:hover img[alt="Mason Dimitrijevic"] { transform: scale(1.7); }
-.player-card img[alt="Hailey Donaldson"] { object-position: center 25%; transform: scale(1.7); }
-.player-card:hover img[alt="Hailey Donaldson"] { transform: scale(1.7); }
 
 .player-card:hover img {
   filter: grayscale(0%) contrast(1);
