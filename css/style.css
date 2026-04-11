@@ -990,6 +990,8 @@ section.flush { padding: 0; }
 .player-card img[alt="Sophia Smelich"] { object-position: center 30%; }
 .player-card img[alt="Ollie Knotek"] { object-position: center 15%; }
 .player-card img[alt="Justin Cuevas"] { object-position: center 35%; }
+.player-card img[alt="Brazil Crockett"] { object-position: center 25%; transform: scale(1.7); }
+.player-card:hover img[alt="Brazil Crockett"] { transform: scale(1.7); }
 .player-card img[alt="Ruth Ciko"] { object-position: center 30%; transform: scale(2); }
 .player-card:hover img[alt="Ruth Ciko"] { transform: scale(2); }
 .player-card img[alt="Mason Dimitrijevic"] { object-position: center 22%; transform: scale(1.7); }
