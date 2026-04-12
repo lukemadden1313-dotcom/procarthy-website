@@ -1512,6 +1512,9 @@ section.flush { padding: 0; }
   .hero-content { padding-bottom: 16px; padding-top: 80px; display: flex; flex-direction: column; }
   .hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
   .hero-subtitle { font-size: 0.8125rem; margin-top: auto; max-width: 100%; }
+  /* Sub-page heroes: push title block to bottom of hero */
+  .hero[style*="min-height"] .hero-content .eyebrow { margin-top: auto; margin-bottom: 12px; }
+  .hero[style*="min-height"] .hero-subtitle { margin-top: 16px; }
   .hero-bg img,
   .hero-bg video { object-position: center center !important; }
   .hero-stats { display: flex; flex-wrap: nowrap; gap: 24px; }
