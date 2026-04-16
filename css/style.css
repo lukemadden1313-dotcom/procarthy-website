@@ -659,8 +659,10 @@ section.flush { padding: 0; }
 }
 
 /* Per-image positioning — desktop */
-.split-mathis .split-media img { object-fit: contain !important; object-position: center center !important; }
-.split-mathis .split-media { background: var(--black); }
+.split-mathis { max-height: none !important; overflow: visible !important; align-items: stretch; }
+.split-mathis .split-media { background: var(--black); display: flex; align-items: center; justify-content: center; }
+.split-mathis .split-media img { width: 100% !important; height: auto !important; max-height: 600px; object-fit: contain !important; object-position: center center !important; }
+.split-mathis .split-media:hover img { transform: none !important; }
 .mathis-caption {
   font-family: var(--font-body);
   font-size: 0.5625rem;
