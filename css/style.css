@@ -1545,8 +1545,8 @@ section.flush { padding: 0; }
   .split-media { height: 70vw; min-height: 240px; max-height: 340px; }
   .split-media img { object-fit: cover !important; object-position: center 45% !important; }
   /* Mathis full-body — needs more height to show head + feet */
-  .split-media:has(.mathis-img) { max-height: 520px; height: 115vw; }
-  .mathis-img { object-position: center 65% !important; }
+  .split-media:has(.mathis-img) { height: auto; max-height: none; min-height: 0; }
+  .mathis-img { height: auto !important; width: 100% !important; object-fit: contain !important; object-position: center center !important; display: block; }
   .mathis-caption { order: 2; padding: 6px 20px 0; grid-column: 1; }
   .split-mathis .split-text { order: 3; }
   .vincent-img { object-position: center 45% !important; }
