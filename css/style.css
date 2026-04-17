@@ -1375,6 +1375,8 @@ section.flush { padding: 0; }
 }
 
 .form-field::placeholder { color: var(--gray); }
+select.form-field { color: var(--gray); }
+select.form-field.selected { color: var(--white); }
 
 .form-grid {
   display: grid;

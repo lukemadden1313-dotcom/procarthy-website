@@ -165,13 +165,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Form focus ---
+  // --- Form focus + select color ---
   document.querySelectorAll('.form-field').forEach(field => {
     field.addEventListener('focus', () => {
       field.style.borderColor = 'var(--accent)';
     });
     field.addEventListener('blur', () => {
       field.style.borderColor = 'rgba(255,255,255,0.08)';
+    });
+  });
+  document.querySelectorAll('select.form-field').forEach(sel => {
+    sel.addEventListener('change', () => {
+      sel.classList.toggle('selected', sel.value !== '');
     });
   });
 
