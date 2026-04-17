@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/horizontal-2.webp" fetchpriority="high">
-  <link rel="stylesheet" href="css/style.css?v=92">
+  <link rel="stylesheet" href="css/style.css?v=93">
 
   <script type="application/ld+json">
   {
@@ -129,13 +129,18 @@
         <h2>Start Your Application</h2>
         <p>Fill out the form below. Our team will reach out to schedule your evaluation sessions.</p>
       </div>
-      <form class="reveal form-grid" onsubmit="event.preventDefault(); alert('Application submitted. We will be in touch.');">
+      <form class="reveal form-grid" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="0649698e-9665-4d44-b893-241bb6a30138">
+        <input type="hidden" name="subject" value="New ProCarthy Application">
+        <input type="hidden" name="from_name" value="ProCarthy Website">
+        <input type="hidden" name="redirect" value="https://procarthy.com/get-started.html?submitted=true">
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none">
         <div class="form-name-row">
-          <input type="text" placeholder="First Name" required class="form-field">
-          <input type="text" placeholder="Last Name" required class="form-field">
+          <input type="text" name="first_name" placeholder="First Name" required class="form-field">
+          <input type="text" name="last_name" placeholder="Last Name" required class="form-field">
         </div>
-        <input type="tel" placeholder="Phone — e.g., (777) 777-7777" required class="form-field">
-        <select class="form-field" required style="color: var(--gray); appearance: none;">
+        <input type="tel" name="phone" placeholder="Phone — e.g., (777) 777-7777" required class="form-field">
+        <select name="service" class="form-field" required style="color: var(--gray); appearance: none;">
           <option value="" disabled selected>Select a Service</option>
           <option>Private Training</option>
           <option>Group Training</option>
@@ -143,7 +148,7 @@
           <option>College Recruitment Support</option>
           <option>Full Program</option>
         </select>
-        <select class="form-field" required style="color: var(--gray); appearance: none;">
+        <select name="level" class="form-field" required style="color: var(--gray); appearance: none;">
           <option value="" disabled selected>Current Level / Committed To</option>
           <option>Youth / Club</option>
           <option>High School</option>
@@ -151,9 +156,9 @@
           <option>College (Current)</option>
           <option>Semi-Pro / Professional</option>
         </select>
-        <input type="text" placeholder="Team / School — e.g., University of..." required class="form-field">
-        <input type="text" placeholder="Age — e.g., 16 years old" required class="form-field">
-        <select class="form-field" required style="color: var(--gray); appearance: none;">
+        <input type="text" name="team_school" placeholder="Team / School — e.g., University of..." required class="form-field">
+        <input type="text" name="age" placeholder="Age — e.g., 16 years old" required class="form-field">
+        <select name="location" class="form-field" required style="color: var(--gray); appearance: none;">
           <option value="" disabled selected>Desired Location</option>
           <option>The Valley</option>
           <option>West LA</option>
@@ -162,8 +167,8 @@
           <option>Long Beach</option>
           <option>Orange County</option>
         </select>
-        <input type="text" placeholder="Do you know someone that trains with ProCarthy? — N/A or who?" class="form-field">
-        <textarea placeholder="Why ProCarthy?" rows="4" class="form-field" style="resize: vertical;"></textarea>
+        <input type="text" name="referral" placeholder="Do you know someone that trains with ProCarthy? — N/A or who?" class="form-field">
+        <textarea name="why_procarthy" placeholder="Why ProCarthy?" rows="4" class="form-field" style="resize: vertical;"></textarea>
         <button type="submit" class="btn btn-primary" style="justify-content: center; width: 100%;">Submit Application <span class="arrow">&rarr;</span></button>
       </form>
     </div>
@@ -276,5 +281,16 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    if (window.location.search.includes('submitted=true')) {
+      const form = document.querySelector('.form-grid');
+      if (form) {
+        form.innerHTML = '<div style="text-align:center;padding:60px 20px;"><h2 style="margin-bottom:16px;">Application Submitted</h2><p style="color:var(--light-gray);margin-bottom:24px;">Thank you. Our team will reach out to schedule your evaluation sessions.</p><a href="index.html" class="btn btn-primary">Back to Home <span class="arrow">&rarr;</span></a></div>';
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', { form_name: 'application' });
+        }
+      }
+    }
+  </script>
 </body>
 </html>
