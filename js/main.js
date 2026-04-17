@@ -237,6 +237,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // --- GA4 event tracking ---
+  if (typeof gtag === 'function') {
+    document.querySelectorAll('.btn-primary, .btn-ghost, .nav-cta').forEach(btn => {
+      btn.addEventListener('click', () => {
+        gtag('event', 'cta_click', {
+          button_text: btn.textContent.trim().replace(/\s+/g, ' '),
+          button_url: btn.href || '',
+          page: window.location.pathname
+        });
+      });
+    });
+
+    document.querySelectorAll('.footer-socials a').forEach(link => {
+      link.addEventListener('click', () => {
+        gtag('event', 'social_click', {
+          platform: link.getAttribute('aria-label') || 'unknown',
+          page: window.location.pathname
+        });
+      });
+    });
+
+    const filterBar = document.getElementById('filterBar');
+    if (filterBar) {
+      filterBar.querySelectorAll('.location-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+          gtag('event', 'player_filter', {
+            filter: tag.dataset.filter || tag.textContent.trim()
+          });
+        });
+      });
+    }
+  }
+
   // --- Mobile: reveal player card color when scrolled into middle band ---
   if (window.matchMedia('(max-width: 768px)').matches) {
     const playerCards = document.querySelectorAll('.player-card');
