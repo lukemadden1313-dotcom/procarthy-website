@@ -678,6 +678,29 @@ section.flush { padding: 0; }
 .vincent-img { object-position: center 55% !important; }
 .dan-img { object-position: right 40% !important; }
 
+/* Founder / content splits — DESKTOP ONLY (mobile <=768px intentionally untouched).
+   Un-clips the section so the full bios show, and gives the photo a taller frame.
+   Excludes .split-mathis so the homepage split is unaffected. */
+@media (min-width: 769px) {
+  .split:not(.split-mathis) { max-height: none; overflow: visible; }
+  .split:not(.split-mathis) .split-media { min-height: 560px; }
+  /* Vincent's photo is landscape — zoom in from the bottom to cut the dead sky */
+  .vincent-img {
+    object-position: center bottom !important;
+    transform: scale(1.5);
+    transform-origin: center bottom;
+  }
+  .split-media:hover .vincent-img { transform: scale(1.5); } /* hold zoom on hover */
+  /* Dan's photo is a dark, bottom-weighted portrait — zoom from the bottom to
+     enlarge his face and push out the empty dark space above him */
+  .dan-img {
+    object-position: center bottom !important;
+    transform: scale(1.4);
+    transform-origin: center bottom;
+  }
+  .split-media:hover .dan-img { transform: scale(1.4); } /* hold zoom on hover */
+}
+
 .story-hero-img {
   object-position: center -5% !important;
 }
