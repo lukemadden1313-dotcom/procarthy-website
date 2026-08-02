@@ -817,6 +817,13 @@ section.flush { padding: 0; }
 
 .stat-block:last-child { border-right: none; }
 
+/* Desktop: show the 6 locations as 3 columns (2 rows) so Long Beach sits under
+   West LA and Orange County under South Bay. Only affects 6-item rows. */
+@media (min-width: 1025px) {
+  .stats-row:has(.stat-block:nth-child(5)) { grid-template-columns: repeat(3, 1fr); }
+  .stats-row:has(.stat-block:nth-child(5)) .stat-block:nth-child(3) { border-right: none; }
+}
+
 .stat-block .number {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 4vw, 3.5rem);
