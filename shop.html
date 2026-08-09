@@ -14,7 +14,7 @@
   <title>Shop — ProCarthy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-  <meta name="description" content="Official ProCarthy gear — apparel and training equipment built for elite soccer athletes. Coming soon.">
+  <meta name="description" content="Official ProCarthy gear — apparel and training equipment built for elite soccer athletes.">
   <link rel="canonical" href="https://procarthy.com/shop.html">
   <link rel="icon" type="image/png" href="images/pc-color-logo.png">
   <link rel="apple-touch-icon" href="images/pc-color-logo.png">
@@ -34,6 +34,7 @@
   <meta name="twitter:image" content="https://procarthy.com/images/og-image.jpg">
 
   <link rel="stylesheet" href="css/style.css?v=96">
+  <link rel="stylesheet" href="css/shop.css?v=1">
 </head>
 <body>
 
@@ -49,44 +50,108 @@
         <a href="get-started.html">Get Started</a>
         <a href="players.html">Our Players</a>
         <a href="shop.html" class="active">Shop</a>
-        <a href="get-started.html" class="nav-cta">Contact</a>
+        <a href="#" class="nav-cta" id="cartToggle">Cart (<span data-cart-count>0</span>)</a>
       </div>
       <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </div>
   </nav>
 
-  <section class="hero" id="hero" style="min-height: 70vh;">
+  <section class="hero" id="hero" style="min-height: 60vh;">
     <div class="hero-bg">
       <img fetchpriority="high" src="images/shop-hero-2.jpg" alt="ProCarthy athlete wearing branded training gear" style="object-position: center center;">
     </div>
     <div class="container hero-content">
-      <span class="eyebrow">Limited Drops</span>
+      <span class="eyebrow">The Collection</span>
       <h1>
-        <span class="hero-line"><span class="hero-line-inner">The</span></span>
-        <span class="hero-line"><span class="hero-line-inner"><em>Collection.</em></span></span>
+        <span class="hero-line"><span class="hero-line-inner">Train</span></span>
+        <span class="hero-line"><span class="hero-line-inner"><em>Different.</em></span></span>
       </h1>
-      <p class="hero-subtitle">Seasonal drops. Limited runs. Built for the ProCarthy athlete.</p>
+      <p class="hero-subtitle">Premium gear built for the ProCarthy athlete. Limited runs, made to perform.</p>
     </div>
   </section>
 
-  <!-- Coming Soon -->
-  <section>
+  <!-- Products -->
+  <section id="shop">
     <div class="container">
-      <div class="section-header reveal" style="text-align: center;">
-        <span class="eyebrow">Summer 2026</span>
-        <h2>Next Drop Coming Soon</h2>
-        <p style="max-width: 520px; margin: 24px auto 0;">Each collection is designed in partnership with Nike — limited quantities, premium materials, made for athletes who train different.</p>
+      <div class="section-header reveal" style="text-align:center;">
+        <span class="eyebrow">Shop</span>
+        <h2>The Collection</h2>
+        <p style="max-width:520px;margin:24px auto 0;">Every piece is designed for training at the highest level. Free size exchanges — shipping calculated at checkout.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Notify CTA -->
-  <section class="cta-section">
-    <div class="container reveal">
-      <span class="eyebrow">Don't Miss Out</span>
-      <h2>Get Notified on<br><em>Drop Day.</em></h2>
-      <p>Follow us on Instagram to be the first to know when new collections go live.</p>
-      <a href="https://instagram.com/procarthy" target="_blank" rel="noopener" class="btn btn-primary">Follow @ProCarthy <span class="arrow">→</span></a>
+      <div class="product-grid" id="productGrid">
+
+        <!-- PRODUCT: duplicate a block to add items. Fill data-* attrs + swap images.
+             data-product-price is in CENTS ($65.00 = 6500).
+             data-stripe-price-id must start with "price_" (get it from Stripe). -->
+        <article class="product-card reveal"
+                 data-product-id="training-top"
+                 data-product-name="Training Top"
+                 data-product-price="6500"
+                 data-stripe-price-id="REPLACE_price_training_top"
+                 data-product-image="images/shop/training-top.jpg"
+                 data-product-images="images/shop/training-top.jpg,images/shop/training-top-2.jpg"
+                 data-product-sizes="S,M,L,XL"
+                 data-product-description="Lightweight, moisture-wicking training top with a low-profile ProCarthy crest. Built for the session and everything after.">
+          <div class="product-card__media" style="background-image:url('images/shop/training-top.jpg')"></div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Training Top</h3>
+            <span class="product-card__price">$65.00</span>
+            <button type="button" class="product-card__add btn btn-primary">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card reveal"
+                 data-product-id="hoodie"
+                 data-product-name="Performance Hoodie"
+                 data-product-price="8500"
+                 data-stripe-price-id="REPLACE_price_hoodie"
+                 data-product-image="images/shop/hoodie.jpg"
+                 data-product-images="images/shop/hoodie.jpg,images/shop/hoodie-2.jpg"
+                 data-product-sizes="S,M,L,XL"
+                 data-product-description="Heavyweight fleece hoodie with an embroidered crest. Warm-up ready, off-pitch essential.">
+          <div class="product-card__media" style="background-image:url('images/shop/hoodie.jpg')"></div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Performance Hoodie</h3>
+            <span class="product-card__price">$85.00</span>
+            <button type="button" class="product-card__add btn btn-primary">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card reveal"
+                 data-product-id="cap"
+                 data-product-name="ProCarthy Cap"
+                 data-product-price="3500"
+                 data-stripe-price-id="REPLACE_price_cap"
+                 data-product-image="images/shop/cap.jpg"
+                 data-product-images="images/shop/cap.jpg,images/shop/cap-2.jpg"
+                 data-product-description="Structured six-panel cap with a curved brim and clean ProCarthy mark. One size, adjustable.">
+          <div class="product-card__media" style="background-image:url('images/shop/cap.jpg')"></div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">ProCarthy Cap</h3>
+            <span class="product-card__price">$35.00</span>
+            <button type="button" class="product-card__add btn btn-primary">Add to Cart</button>
+          </div>
+        </article>
+
+        <article class="product-card reveal"
+                 data-product-id="shorts"
+                 data-product-name="Training Shorts"
+                 data-product-price="4500"
+                 data-stripe-price-id="REPLACE_price_shorts"
+                 data-product-image="images/shop/shorts.jpg"
+                 data-product-images="images/shop/shorts.jpg,images/shop/shorts-2.jpg"
+                 data-product-sizes="S,M,L,XL"
+                 data-product-description="Four-way stretch training shorts with zip pockets. Move without limits.">
+          <div class="product-card__media" style="background-image:url('images/shop/shorts.jpg')"></div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Training Shorts</h3>
+            <span class="product-card__price">$45.00</span>
+            <button type="button" class="product-card__add btn btn-primary">Add to Cart</button>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
@@ -106,10 +171,56 @@
     </div>
   </footer>
 
-  <div class="sticky-cta">
-    <a href="get-started.html" class="btn btn-primary">Get Started <span class="arrow">→</span></a>
+  <!-- Cart Drawer -->
+  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer__backdrop" data-cart-close></div>
+    <aside class="cart-drawer__panel" role="dialog" aria-label="Shopping cart">
+      <header class="cart-drawer__header">
+        <h3 class="cart-drawer__title">Your Cart</h3>
+        <button class="cart-drawer__close" type="button" aria-label="Close cart" data-cart-close>&times;</button>
+      </header>
+      <ul class="cart-drawer__items" id="cartItems"></ul>
+      <p class="cart-drawer__empty" id="cartEmpty">Your cart is empty.</p>
+      <footer class="cart-drawer__footer">
+        <div class="cart-drawer__subtotal">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <p class="cart-drawer__note">Shipping and taxes calculated at checkout.</p>
+        <button class="cart-drawer__checkout btn btn-primary" type="button" id="cartCheckout" disabled>Checkout</button>
+        <p class="cart-drawer__error" id="cartError" hidden></p>
+      </footer>
+    </aside>
   </div>
 
+  <!-- Product Quick-View Modal -->
+  <div class="product-modal" id="productModal" aria-hidden="true">
+    <div class="product-modal__backdrop" data-product-modal-close></div>
+    <div class="product-modal__panel" role="dialog" aria-label="Product details">
+      <button class="product-modal__close" type="button" aria-label="Close" data-product-modal-close>&times;</button>
+      <div class="product-modal__media">
+        <button class="product-modal__nav product-modal__prev" id="productModalPrev" type="button" aria-label="Previous image" hidden>&#8249;</button>
+        <div class="product-modal__main-img" id="productModalMainImg"></div>
+        <button class="product-modal__nav product-modal__next" id="productModalNext" type="button" aria-label="Next image" hidden>&#8250;</button>
+        <div class="product-modal__thumbs" id="productModalThumbs"></div>
+      </div>
+      <div class="product-modal__info">
+        <h3 class="product-modal__name" id="productModalName"></h3>
+        <span class="product-modal__price" id="productModalPrice"></span>
+        <p class="product-modal__desc" id="productModalDesc"></p>
+        <div class="product-modal__sizes-row" id="productModalSizesRow" hidden>
+          <span class="product-modal__sizes-label">Size</span>
+          <div class="product-modal__sizes" id="productModalSizes"></div>
+        </div>
+        <button class="product-modal__add btn btn-primary" id="productModalAdd" type="button">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout success toast -->
+  <div class="checkout-toast" id="checkoutToast" hidden>Order confirmed — thank you! A receipt is on its way to your email.</div>
+
   <script src="js/main.js"></script>
+  <script src="js/shop.js?v=1"></script>
 </body>
 </html>
