@@ -1,11 +1,19 @@
 /* ============================================
    PROCARTHY — Shop cart + Stripe checkout
+   Products have Color + Print (Original/Pink Print) + Size variants.
+   All variants of a product share ONE price / Stripe price ID; the chosen
+   color/print/size ride to Stripe as metadata so Vincent sees what to order.
    ============================================ */
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('productGrid');
   if (!grid) return; // not the shop page
 
-  const CART_KEY = 'procarthy_cart_v1';
+  const CART_KEY = 'procarthy_cart_v2';
+
+  const COLOR_HEX = {
+    'Black': '#1c1c1c', 'Grey': '#9b9b9b', 'White': '#f2f2f2',
+    'Pink': '#e6007e', 'Turquoise': '#17b3ac', 'Light Blue': '#7fbce6',
+  };
 
   const cartDrawer = document.getElementById('cartDrawer');
   const cartItemsEl = document.getElementById('cartItems');
@@ -16,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartCountEls = document.querySelectorAll('[data-cart-count]');
   const cartToggle = document.getElementById('cartToggle');
 
+  const splitAttr = v => (v || '').split(',').map(s => s.trim()).filter(Boolean);
+
   // --- Build catalog from the DOM ---
   const catalog = {};
   document.querySelectorAll('.product-card').forEach(card => {
@@ -25,9 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
       price: parseInt(card.dataset.productPrice, 10) || 0, // cents
       stripePriceId: card.dataset.stripePriceId || '',
       image: card.dataset.productImage || '',
-      images: (card.dataset.productImages || card.dataset.productImage || '')
-        .split(',').map(s => s.trim()).filter(Boolean),
-      sizes: (card.dataset.productSizes || '').split(',').map(s => s.trim()).filter(Boolean),
+      images: splitAttr(card.dataset.productImages || card.dataset.productImage),
+      colors: splitAttr(card.dataset.productColors),
+      womenOnlyColors: splitAttr(card.dataset.productWomenOnlyColors),
+      womenSizes: splitAttr(card.dataset.productWomenSizes),
+      prints: splitAttr(card.dataset.productPrints),
+      sizes: splitAttr(card.dataset.productSizes),
       description: card.dataset.productDescription || '',
     };
   });
@@ -38,15 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const raw = localStorage.getItem(CART_KEY);
       const parsed = raw ? JSON.parse(raw) : [];
-      // drop any lines whose product no longer exists
       return Array.isArray(parsed) ? parsed.filter(i => catalog[i.id]) : [];
     } catch { return []; }
   }
   function saveCart() { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
   let cart = loadCart();
 
-  // A line is uniquely identified by (productId, size) so S and M are separate rows.
-  const sameLine = (a, b) => a.id === b.id && (a.size || '') === (b.size || '');
+  // A cart line is unique per (product, color, print, size).
+  const sameLine = (a, b) =>
+    a.id === b.id && (a.color||'') === (b.color||'') &&
+    (a.print||'') === (b.print||'') && (a.size||'') === (b.size||'');
+
+  const variantLabel = i => [i.color, i.print, i.size].filter(Boolean).join(' · ');
 
   function updateCartCount() {
     const count = cart.reduce((n, i) => n + i.qty, 0);
@@ -57,20 +73,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!cartItemsEl) return;
     cartItemsEl.innerHTML = '';
     let subtotal = 0;
-    cart.forEach(item => {
+    cart.forEach((item, idx) => {
       const product = catalog[item.id];
       if (!product) return;
       subtotal += product.price * item.qty;
       const li = document.createElement('li');
       li.className = 'cart-item';
-      li.dataset.id = item.id;
-      li.dataset.size = item.size || '';
-      const sizeLabel = item.size ? `<span class="cart-item__size">Size ${item.size}</span>` : '';
+      li.dataset.idx = idx;
       li.innerHTML = `
         <div class="cart-item__img" style="background-image:url('${product.image}')"></div>
         <div>
           <p class="cart-item__name">${product.name}</p>
-          ${sizeLabel}
+          <span class="cart-item__variant">${variantLabel(item)}</span>
           <span class="cart-item__price">${formatUSD(product.price)}</span>
           <div class="cart-item__qty">
             <button type="button" data-dec aria-label="Decrease">&minus;</button>
@@ -87,24 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
   }
 
-  function addToCart(productId, size) {
-    const ref = { id: productId, size: size || '' };
-    const existing = cart.find(i => sameLine(i, ref));
+  function addToCart(line) {
+    const existing = cart.find(i => sameLine(i, line));
     if (existing) existing.qty = Math.min(99, existing.qty + 1);
-    else cart.push({ id: productId, qty: 1, size: size || '' });
-    saveCart();
-    renderCart();
-  }
-  function changeQty(ref, delta) {
-    const item = cart.find(i => sameLine(i, ref));
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty < 1) cart = cart.filter(i => !sameLine(i, ref));
-    saveCart();
-    renderCart();
-  }
-  function removeLine(ref) {
-    cart = cart.filter(i => !sameLine(i, ref));
+    else cart.push({ ...line, qty: 1 });
     saveCart();
     renderCart();
   }
@@ -126,15 +126,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if (cartToggle) cartToggle.addEventListener('click', e => { e.preventDefault(); openCart(); });
   document.querySelectorAll('[data-cart-close]').forEach(el => el.addEventListener('click', closeCart));
 
-  // Cart item row interactions (delegated)
   if (cartItemsEl) {
     cartItemsEl.addEventListener('click', e => {
       const li = e.target.closest('.cart-item');
       if (!li) return;
-      const ref = { id: li.dataset.id, size: li.dataset.size };
-      if (e.target.closest('[data-inc]')) changeQty(ref, 1);
-      else if (e.target.closest('[data-dec]')) changeQty(ref, -1);
-      else if (e.target.closest('[data-remove]')) removeLine(ref);
+      const idx = parseInt(li.dataset.idx, 10);
+      const item = cart[idx];
+      if (!item) return;
+      if (e.target.closest('[data-inc]')) item.qty = Math.min(99, item.qty + 1);
+      else if (e.target.closest('[data-dec]')) { item.qty -= 1; if (item.qty < 1) cart.splice(idx, 1); }
+      else if (e.target.closest('[data-remove]')) cart.splice(idx, 1);
+      else return;
+      saveCart();
+      renderCart();
     });
   }
 
@@ -148,67 +152,124 @@ document.addEventListener('DOMContentLoaded', () => {
   const pmAdd = document.getElementById('productModalAdd');
   const pmPrev = document.getElementById('productModalPrev');
   const pmNext = document.getElementById('productModalNext');
-  const pmSizes = document.getElementById('productModalSizes');
-  const pmSizesRow = document.getElementById('productModalSizesRow');
+  const pmColorRow = document.getElementById('pmColorRow');
+  const pmColors = document.getElementById('pmColors');
+  const pmColorVal = document.getElementById('pmColorVal');
+  const pmPrintRow = document.getElementById('pmPrintRow');
+  const pmPrints = document.getElementById('pmPrints');
+  const pmSizeRow = document.getElementById('pmSizeRow');
+  const pmSizes = document.getElementById('pmSizes');
 
-  let pmImages = [], pmIndex = 0, pmProductId = null, pmSizesAvail = [], pmSelectedSize = '';
+  let pm = null; // { product, images, index, color, print, size }
 
-  function updatePmAddState() {
-    if (!pmAdd) return;
-    const needsSize = pmSizesAvail.length > 0;
-    pmAdd.disabled = needsSize && !pmSelectedSize;
-    if (!pmAdd.classList.contains('is-added')) {
-      pmAdd.textContent = (needsSize && !pmSelectedSize) ? 'Select a Size' : 'Add to Cart';
+  function pmAvailableSizes() {
+    // Women-only colors (e.g. turquoise tee) restrict sizes to women's.
+    if (pm.color && pm.product.womenOnlyColors.includes(pm.color) && pm.product.womenSizes.length) {
+      return pm.product.womenSizes;
     }
+    return pm.product.sizes;
   }
+  function pmAvailablePrints() {
+    // A pink garment can't take a pink print — offer Original only.
+    if (pm.color === 'Pink') return pm.product.prints.filter(p => p !== 'Pink Print');
+    return pm.product.prints;
+  }
+
   function renderModalImage() {
-    if (!pmImages.length) return;
-    pmMainImg.style.backgroundImage = `url('${pmImages[pmIndex]}')`;
-    pmThumbs.querySelectorAll('.product-modal__thumb').forEach((t, i) => t.classList.toggle('active', i === pmIndex));
-    const single = pmImages.length <= 1;
+    if (!pm.images.length) return;
+    pmMainImg.style.backgroundImage = `url('${pm.images[pm.index]}')`;
+    pmThumbs.querySelectorAll('.product-modal__thumb').forEach((t, i) => t.classList.toggle('active', i === pm.index));
+    const single = pm.images.length <= 1;
     pmPrev.hidden = single; pmNext.hidden = single; pmThumbs.hidden = single;
   }
+
+  function renderPills(container, values, selected, onPick) {
+    container.innerHTML = '';
+    values.forEach(v => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'product-modal__pill' + (v === selected ? ' selected' : '');
+      b.textContent = v;
+      b.addEventListener('click', () => onPick(v));
+      container.appendChild(b);
+    });
+  }
+
+  function renderColors() {
+    pmColors.innerHTML = '';
+    pm.product.colors.forEach(c => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'product-modal__swatch' + (c === pm.color ? ' selected' : '');
+      b.title = c;
+      b.setAttribute('aria-label', c);
+      b.style.setProperty('--sw', COLOR_HEX[c] || '#888');
+      b.addEventListener('click', () => {
+        pm.color = c;
+        // re-validate print + size against the new color
+        if (!pmAvailablePrints().includes(pm.print)) pm.print = '';
+        if (!pmAvailableSizes().includes(pm.size)) pm.size = '';
+        renderVariantUI();
+      });
+      pmColors.appendChild(b);
+    });
+    pmColorVal.textContent = pm.color ? '— ' + pm.color : '';
+  }
+
+  function renderVariantUI() {
+    renderColors();
+    renderPills(pmPrints, pmAvailablePrints(), pm.print, v => { pm.print = v; renderVariantUI(); });
+    renderPills(pmSizes, pmAvailableSizes(), pm.size, v => { pm.size = v; renderVariantUI(); });
+    updateAddState();
+  }
+
+  function needs() {
+    const missing = [];
+    if (pm.product.colors.length && !pm.color) missing.push('color');
+    if (pm.product.prints.length && !pm.print) missing.push('print');
+    if (pm.product.sizes.length && !pm.size) missing.push('size');
+    return missing;
+  }
+  function updateAddState() {
+    const missing = needs();
+    pmAdd.disabled = missing.length > 0;
+    if (!pmAdd.classList.contains('is-added')) {
+      pmAdd.textContent = missing.length ? 'Select ' + missing.join(', ') : 'Add to Cart';
+    }
+  }
+
   function openProductModal(card) {
     if (!productModal || !card) return;
     const product = catalog[card.dataset.productId];
-    pmProductId = product.id;
-    pmImages = product.images.length ? product.images : [product.image];
-    pmIndex = 0;
+    pm = {
+      product,
+      images: product.images.length ? product.images : [product.image],
+      index: 0,
+      color: product.colors.length === 1 ? product.colors[0] : '',
+      print: '',
+      size: '',
+    };
     pmName.textContent = product.name;
     pmPrice.textContent = formatUSD(product.price);
     pmDesc.textContent = product.description;
+
     pmThumbs.innerHTML = '';
-    pmImages.forEach((src, i) => {
+    pm.images.forEach((src, i) => {
       const t = document.createElement('div');
       t.className = 'product-modal__thumb';
       t.style.backgroundImage = `url('${src}')`;
-      t.addEventListener('click', () => { pmIndex = i; renderModalImage(); });
+      t.addEventListener('click', () => { pm.index = i; renderModalImage(); });
       pmThumbs.appendChild(t);
     });
-    // sizes
-    pmSizesAvail = product.sizes;
-    pmSelectedSize = '';
-    pmSizes.innerHTML = '';
-    if (pmSizesAvail.length) {
-      pmSizesRow.hidden = false;
-      pmSizesAvail.forEach(sz => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'product-modal__size';
-        b.textContent = sz;
-        b.addEventListener('click', () => {
-          pmSelectedSize = sz;
-          pmSizes.querySelectorAll('.product-modal__size').forEach(x => x.classList.toggle('selected', x === b));
-          updatePmAddState();
-        });
-        pmSizes.appendChild(b);
-      });
-    } else {
-      pmSizesRow.hidden = true;
-    }
+
+    pmColorRow.hidden = !product.colors.length;
+    pmPrintRow.hidden = !product.prints.length;
+    pmSizeRow.hidden = !product.sizes.length;
+
     pmAdd.classList.remove('is-added');
-    updatePmAddState();
     renderModalImage();
+    renderVariantUI();
+
     productModal.classList.add('open');
     productModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -219,38 +280,21 @@ document.addEventListener('DOMContentLoaded', () => {
     productModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
-  if (pmPrev) pmPrev.addEventListener('click', () => { pmIndex = (pmIndex - 1 + pmImages.length) % pmImages.length; renderModalImage(); });
-  if (pmNext) pmNext.addEventListener('click', () => { pmIndex = (pmIndex + 1) % pmImages.length; renderModalImage(); });
+  if (pmPrev) pmPrev.addEventListener('click', () => { pm.index = (pm.index - 1 + pm.images.length) % pm.images.length; renderModalImage(); });
+  if (pmNext) pmNext.addEventListener('click', () => { pm.index = (pm.index + 1) % pm.images.length; renderModalImage(); });
   document.querySelectorAll('[data-product-modal-close]').forEach(el => el.addEventListener('click', closeProductModal));
+
   if (pmAdd) pmAdd.addEventListener('click', () => {
-    if (pmSizesAvail.length && !pmSelectedSize) return;
-    addToCart(pmProductId, pmSelectedSize);
+    if (needs().length) return;
+    addToCart({ id: pm.product.id, color: pm.color, print: pm.print, size: pm.size });
     pmAdd.classList.add('is-added');
     pmAdd.textContent = 'Added';
-    setTimeout(() => { closeProductModal(); openCart(); pmAdd.classList.remove('is-added'); updatePmAddState(); }, 700);
+    setTimeout(() => { closeProductModal(); openCart(); pmAdd.classList.remove('is-added'); updateAddState(); }, 700);
   });
 
-  // --- Product card clicks ---
+  // --- Product card clicks (whole card or button opens the modal) ---
   document.querySelectorAll('.product-card').forEach(card => {
-    // Clicking the card opens the quick view
-    card.addEventListener('click', e => {
-      if (e.target.closest('.product-card__add')) return; // handled below
-      openProductModal(card);
-    });
-  });
-  document.querySelectorAll('.product-card__add').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const card = btn.closest('.product-card');
-      const product = catalog[card.dataset.productId];
-      // Sized products must pick a size — funnel to the modal.
-      if (product.sizes.length) { openProductModal(card); return; }
-      addToCart(product.id);
-      btn.classList.add('is-added');
-      btn.textContent = 'Added';
-      setTimeout(() => { btn.classList.remove('is-added'); btn.textContent = 'Add to Cart'; }, 1200);
-      openCart();
-    });
+    card.addEventListener('click', () => openProductModal(card));
   });
 
   // --- Checkout ---
@@ -260,10 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const items = cart.map(i => ({
         priceId: catalog[i.id].stripePriceId,
         qty: i.qty,
-        size: i.size || '',
         name: catalog[i.id].name,
+        color: i.color || '',
+        print: i.print || '',
+        size: i.size || '',
       }));
-      // Refuse to call Stripe with placeholder IDs — surfaces config errors early.
       const missing = items.find(i => !i.priceId || i.priceId.startsWith('REPLACE_'));
       if (missing) {
         if (cartErrorEl) {
@@ -306,12 +351,8 @@ document.addEventListener('DOMContentLoaded', () => {
     saveCart();
     renderCart();
     const toast = document.getElementById('checkoutToast');
-    if (toast) {
-      toast.hidden = false;
-      setTimeout(() => { toast.hidden = true; }, 6000);
-    }
+    if (toast) { toast.hidden = false; setTimeout(() => { toast.hidden = true; }, 6000); }
     if (typeof gtag === 'function') gtag('event', 'purchase_complete');
-    // clean the URL so a refresh doesn't re-show the toast
     window.history.replaceState({}, '', window.location.pathname);
   } else if (checkoutState === 'cancel') {
     openCart();

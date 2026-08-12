@@ -45,9 +45,16 @@ export default async function handler(req, res) {
     validItems.forEach((i, idx) => {
       const name = String(i.name || '').slice(0, 80);
       const qty = Math.max(1, Math.min(99, parseInt(i.qty, 10) || 1));
-      if (i.size) {
-        metadata[`item_${idx + 1}`] = `${name} | size ${i.size} | qty ${qty}`.slice(0, 500);
-        summaryParts.push(`${name} (size ${i.size}) x${qty}`);
+      // Variant attrs (color / print / size) — whichever are present.
+      const attrs = [
+        i.color ? `color ${i.color}` : '',
+        i.print ? `print ${i.print}` : '',
+        i.size ? `size ${i.size}` : '',
+      ].filter(Boolean);
+      const attrStr = attrs.join(', ');
+      if (attrStr) {
+        metadata[`item_${idx + 1}`] = `${name} | ${attrStr} | qty ${qty}`.slice(0, 500);
+        summaryParts.push(`${name} (${attrStr}) x${qty}`);
       } else {
         summaryParts.push(`${name} x${qty}`);
       }
