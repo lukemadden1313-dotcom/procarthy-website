@@ -43,7 +43,11 @@ export default async function handler(req, res) {
     const metadata = {};
     const summaryParts = [];
     validItems.forEach((i, idx) => {
-      const name = String(i.name || '').slice(0, 80);
+      const displayName = String(i.name || '').slice(0, 80);
+      const sku = String(i.sku || '').slice(0, 80);
+      // Show the marketing name plus the Nike garment in brackets so fulfillment
+      // knows exactly what to order, e.g. "Quarter Zip [Nike Dri-FIT Park 26]".
+      const name = sku && sku !== displayName ? `${displayName} [${sku}]` : displayName;
       const qty = Math.max(1, Math.min(99, parseInt(i.qty, 10) || 1));
       // Variant attrs (color / print / size) — whichever are present.
       const attrs = [

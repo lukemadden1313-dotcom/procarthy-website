@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     catalog[card.dataset.productId] = {
       id: card.dataset.productId,
       name: card.dataset.productName || '',
+      sku: card.dataset.productSku || '', // Nike garment name, for fulfillment
       price: parseInt(card.dataset.productPrice, 10) || 0, // cents
       stripePriceId: card.dataset.stripePriceId || '',
       image: card.dataset.productImage || '',
@@ -305,6 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
         priceId: catalog[i.id].stripePriceId,
         qty: i.qty,
         name: catalog[i.id].name,
+        sku: catalog[i.id].sku,
         color: i.color || '',
         print: i.print || '',
         size: i.size || '',
