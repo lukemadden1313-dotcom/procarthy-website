@@ -76,6 +76,10 @@ export default async function handler(req, res) {
       shipping_address_collection: { allowed_countries: ['US', 'CA'] },
       phone_number_collection: { enabled: true },
       allow_promotion_codes: true,
+      // Stripe Tax computes sales tax from the address collected at checkout.
+      // Requires Stripe Tax to be enabled in the dashboard (origin address +
+      // registrations) and each Price to have a tax behavior set.
+      automatic_tax: { enabled: true },
       ...(hasSizes ? { metadata } : {}),
       payment_intent_data: {
         description,
